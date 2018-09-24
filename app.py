@@ -15,24 +15,26 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return "You are logged in as " + session['username']
-    return render_template('index.html')
+    #if 'username' in session:
+        #return "You are logged in as " + session['username']
+    return render_template('index.html', breakfast_recipes=mongo.db.recipes.find({"category": "Breakfast"}))
 
 # Login and Signup inc password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
 # https://www.youtube.com/watch?v=vVx1737auSE
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    users = mongo.db.users
-    login_user = users.find_one({"username" : request.form['username']})
+    if request.method == 'POST':
+        users = mongo.db.users
+        login_user = users.find_one({"username" : request.form['username']})
     
-    if login_user:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), 
-        login_user['password']) == login_user['password'].encode('utf-8'):
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-    return "Invalid username/password combination"
+        if login_user:
+            if bcrypt.hashpw(request.form['password'].encode('utf-8'), 
+            login_user['password']) == login_user['password'].encode('utf-8'):
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+        return "Invalid username/password combination"
         
+    return render_template('login.html')    
         
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -49,7 +51,12 @@ def signup():
         
     return render_template('signup.html')
 
+@app.route('/addrecipe', methods=['POST', 'GET'])
+def addrecipe():
+    if 'username' in session:
+        return render_template("addrecipe.html")
 
+    return "please login to add a recipe"        
 
 
 

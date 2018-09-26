@@ -1,83 +1,84 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Add Recipe</h1>
+<div class='container card-panel'>
+    <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
+        <div class="row">
+            <h4 class='form-header'>Recipe Category</h4>
+            <div class="input-field col s12">
 
-<form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
-    <div class="row">
-
-        <div class="input-field col s12">
-
-            <select id="category" name="category">
+                <select id="category" name="category">
                   <option value="" disabled selected>Choose Category</option>
-                  
                       <option value="Breakfast">Breakfast</option>
                       <option value="Lunch">Lunch</option>
                       <option value="Dinner">Dinner</option>
-                 
                 </select>
-            <label>Recipe Category</label>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="switch">
+                <label>
+                  <input type="checkbox" name="vegetarian">
+                      <span class="lever"></span>
+                          Vegetarian
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="switch">
+                <label>
+                  <input type="checkbox" name="vegan">
+                      <span class="lever"></span>
+                          Vegan
+                </label>
+            </div>
+        </div>
+</div>
+<div class='container card-panel'>
     <div class="row">
+        <h4 class='form-header'>Recipe Title</h4>
         <div class="input-field col s12">
 
-            <input id="task_name" name="task_name" type="text">
+            <input id="task_name" name="title" type="text">
             <label for="icon_prefix">Recipe Title</label>
         </div>
     </div>
-
-
-
-
     <div class="row">
         <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <textarea id="textarea1" name="description" class="materialize-textarea"></textarea>
             <label for="textarea1">Brief description</label>
         </div>
     </div>
+</div>
 
 
 
+
+<div class='container card-panel'>
     <div class="row">
-        <div class="switch">
-            <label>
-                  <input id="is_urgent" name="is_urgent" type="checkbox">
-                  <span class="lever"></span>
-                  Vegetarian
-                </label>
+        <h4 class='form-header'>Ingredients</h4>
+        <p>List ingredients in the order you would like them to appear, with the quantity first. <strong>Press the 'enter' key between each new ingredient.</strong></p>
+
+        <div class="input-field col s12">
+            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 1 cup flour"></textarea>
+
         </div>
     </div>
+</div>
+<div class='container card-panel'>
     <div class="row">
-        <div class="switch">
-            <label>
-                  <input id="is_urgent" name="is_urgent" type="checkbox">
-                  <span class="lever"></span>
-                  Vegan
-                </label>
+        <h4 class='form-header'>Method</h4>
+        <p>Write the method in numbered steps. <strong>Press the 'enter' key between each new ingredient</strong></p>
+        <div class="input-field col s12">
+            <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
         </div>
-    </div>
 
-    <div class="row">
-        <p>List ingredients in the order you would like them to appear, with the quantity first. Each ingredient should start a new line as follows:</p>
-        <ul>
-            <li>1 cup Milk</li>
-            <li>2 Eggs</li>
-            <li>1 tbsp Sugar</li>
-        </ul>
-        <form class="col s12">
-
-            <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea" placeholder="eg. 1 tin of Beans"></textarea>
-                <label for="textarea1">Ingredients</label>
-            </div>
-
-        </form>
-    </div>
-    <div class="row">
-        <button class="btn waves-effect waves-light" type="submit" name="action">Add Task
+        <button class="btn waves-effect waves-light right" type="submit" name="action">Add Recipe
                 <i class="material-icons right">playlist_add</i>
              </button>
+
     </div>
-</form>
 </div>
+</form>
+
 
 {% endblock %}

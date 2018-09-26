@@ -74,9 +74,8 @@ def addrecipe():
                             "description": request.form['description'],
                             "ingredients": ingredient_list,
                             "method": method_list,
-                            "likes": "0",
-                            "vegetarian": request.form['vegetarian'],
-                            "vegan": request.form['vegetarian']
+                            #"likes": "0",
+                            "vegetarian": request.form['vegetarian']
             })
             return render_template('index.html')
         

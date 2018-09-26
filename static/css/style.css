@@ -1,7 +1,34 @@
-.nav {
-    background-color: #e0ee6e;
+.card-image {
+    height: 300px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 
-.boxed-form {
-    border: 2px solid black;
+
+
+.breakfast-img {
+    background-image: url("../images/jenn-kosar-584038-unsplash.jpg");
 }
+
+.lunch-img {
+    background-image: url("../images/oscar-nord-627731-unsplash.jpg");
+}
+
+.dinner-img {
+    background-image: url("../images/christine-siracusa-385441-unsplash.jpg");
+}
+
+.bbq-img {
+    background-image: url("../images/alexey-ruban-98474-unsplash.jpg");
+}
+
+.dessert-img {
+    background-image: url("../images/natural-chef-carolyn-nicholas-560111-unsplash.jpg");
+}
+
+
+
+

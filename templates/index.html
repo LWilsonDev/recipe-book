@@ -3,8 +3,8 @@
 <div class="row">
     <div class="col s12 m6 l4">
         <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="static/images/jenn-kosar-584038-unsplash.jpg">
+            <div class="breakfast-img card-image waves-effect waves-block waves-light activator ">
+                
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Breakfast<i class="material-icons right">more_vert</i></span>
@@ -24,8 +24,7 @@
     </div>
     <div class="col s12 m6 l4">
         <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="static/images/oscar-nord-627731-unsplash.jpg">
+            <div class="card-image lunch-img waves-effect waves-block waves-light activator">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Lunch<i class="material-icons right">more_vert</i></span>
@@ -35,6 +34,68 @@
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Lunch Recipes</span>
                 <ul>
                     {% for recipe in lunch_recipes %}
+                    <li>
+                        <a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-image dinner-img waves-effect waves-block waves-light activator">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Dinner<i class="material-icons right">more_vert</i></span>
+                <p><a href="#">See all Dinner recipes</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Dinner Recipes</span>
+                <ul>
+                    {% for recipe in dinner_recipes %}
+                    <li>
+                        <a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-image bbq-img waves-effect waves-block waves-light activator">
+                
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">BBQ<i class="material-icons right">more_vert</i></span>
+                <p><a href="#">See all BBQ recipes</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>BBQ Recipes</span>
+                <ul>
+                    {% for recipe in bbq_recipes %}
+                    <li>
+                        <a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-image dessert-img waves-effect waves-block waves-light activator">
+                
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Dessert<i class="material-icons right">more_vert</i></span>
+                <p><a href="#">See all Dessert recipes</a></p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Dessert Recipes</span>
+                <ul>
+                    {% for recipe in dessert_recipes %}
                     <li>
                         <a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a>
                         </li>

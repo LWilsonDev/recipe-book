@@ -59,24 +59,26 @@ def addrecipe():
         if request.method == 'POST':
             recipes = mongo.db.recipes
             
-            ingredient_list = []
-            ingredients = request.form['ingredients'].splitlines()
-            ingredient_list.append(ingredients)
+           #ingredient_list = request.form['ingredients'].splitlines()
+           #
+           #
+           #method_list = []
+           #method = request.form['method'].splitlines()
+           #method_list.append(method)
+           #
+           
+            recipes.insert_one(request.form.to_dict())
+            #recipes.insert({"title": request.form['title'],
+            #                "category": request.form['category'],
+            #                "author": session['username'],
+            #                "description": request.form['description'],
+            #                
+            #                
+            #                "method": method_list,
+            #                #"likes": "0",
+            #                "vegetarian": request.form['vegetarian']
+            #})
             
-            method_list = []
-            method = request.form['method'].splitlines()
-            method_list.append(method)
-            
-            print(ingredient_list)
-            recipes.insert({"title": request.form['title'],
-                            "category": request.form['category'],
-                            "author": session['username'],
-                            "description": request.form['description'],
-                            "ingredients": ingredient_list,
-                            "method": method_list,
-                            #"likes": "0",
-                            "vegetarian": request.form['vegetarian']
-            })
             return render_template('index.html')
         
         return render_template("addrecipe.html")

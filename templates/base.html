@@ -40,6 +40,13 @@
             $('select').material_select();
             $(".button-collapse").sideNav();
             
+            var newFormField = '<div class="input-field col s3"><input id="quantity" name="quantity" type="text"><label for="quantity">Quantity</label></div><div class="input-field col s9"><input id="ingredient" type="text"><label for="ingredient">Ingredient</label></div>';
+            $('#addIngredient').click(function() {
+                $('.ingredient-wrapper').append(newFormField);
+            });
+            $('.ingredient-wrapper').on('click', '#removeIngredient', function(){
+                $(this).parent('div').remove(); //Remove new form field
+            });
         });
     </script>
 </body>

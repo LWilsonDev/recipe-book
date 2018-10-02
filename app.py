@@ -45,7 +45,7 @@ def signup():
         
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({"username": request.form['username'],"email": request.form['email'], "password" : hashpass })
+            users.insert({"username": request.form['username'], "password" : hashpass })
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         return 'That username already exists!'
@@ -57,28 +57,24 @@ def addrecipe():
     
     if 'username' in session:
         if request.method == 'POST':
-            ingredient_list = []
-            for quantity, ingredient in zip(request.form.getlist('quantity'),
-                                          request.form.getlist('ingredient')):
-                result = (quantity, ingredient)
-                ingredient_list.append(result)
-                
-               
-            ingredient_dict = dict(ingredient_list)
-            print(ingredient_list)
-            print(ingredient_dict)
+            
+            ingredient = request.form['ingredients'].splitlines()
+            method = request.form['method'].splitlines()
+           
+           #"ingredients": {'quantity': request.form['quantity'], 'ingredient': request.form['ingredient']},
             recipes = mongo.db.recipes
             
             recipes.insert({"title": request.form['title'],
                             "category": request.form['category'],
                             "author": session['username'],
                             "description": request.form['description'],
-                            "ingredients": ingredient_dict,
-                            "vegetarian": request.form['vegetarian']
+                            "ingredients": ingredient,
+                            "vegetarian": request.form['vegetarian'],
+                            "method": method
             })
             
             
-            return render_template('index.html')
+            return render_template('addrecipe.html')
         
         return render_template("addrecipe.html")
 

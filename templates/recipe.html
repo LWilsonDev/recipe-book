@@ -1,24 +1,29 @@
 {% extends 'base.html' %} {% block content %}
 
-    <h2>{{ recipe.title }}</h2>
+<h2>{{ recipe.title }}</h2>
 <div class=row>
     <div class="col s12 m6">
         <div class="card-panel">
             <h4>Ingredients</h4>
             <ul>
-            
-            <li>{{ recipe.ingredients }}</li>
-            
+                {% for ingredient in recipe.ingredients %}
+                <li>{{ ingredient }} </li>
+                {% endfor %}
             </ul>
         </div>
-    </div>  
+    </div>
     <div class="col s12 m6">
         <div class="card-panel">
-            
+            <h4>Method</h4>
+            <ul>
+                {% for step in recipe.method %}
+                <li>{{ step }} </li>
+                {% endfor %}
+            </ul>
         </div>
-    </div>  
-    
-    
+    </div>
+
+
 </div>
 
 

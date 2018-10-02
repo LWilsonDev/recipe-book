@@ -61,13 +61,23 @@ def addrecipe():
             for quantity, ingredient in zip(request.form.getlist('quantity'),
                                           request.form.getlist('ingredient')):
                 result = (quantity, ingredient)
-                ingredient_list.append(result)                           
-               # print(quantity, ingredient)
-                #ingredient_list.append(quantity, ingredient)
-            
+                ingredient_list.append(result)
+                
+               
+            ingredient_dict = dict(ingredient_list)
             print(ingredient_list)
+            print(ingredient_dict)
             recipes = mongo.db.recipes
-            #recipes.insert_one(request.form.to_dict())
+            
+            recipes.insert({"title": request.form['title'],
+                            "category": request.form['category'],
+                            "author": session['username'],
+                            "description": request.form['description'],
+                            "ingredients": ingredient_dict,
+                            "vegetarian": request.form['vegetarian']
+            })
+            
+            
             return render_template('index.html')
         
         return render_template("addrecipe.html")

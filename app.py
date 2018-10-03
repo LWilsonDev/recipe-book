@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, session, redirect
+from flask import Flask, render_template, url_for, request, session, redirect,flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -60,8 +60,6 @@ def addrecipe():
             
             ingredient = request.form['ingredients'].splitlines()
             method = request.form['method'].splitlines()
-           
-           #"ingredients": {'quantity': request.form['quantity'], 'ingredient': request.form['ingredient']},
             recipes = mongo.db.recipes
             
             recipes.insert({"title": request.form['title'],
@@ -73,7 +71,7 @@ def addrecipe():
                             "method": method
             })
             
-            
+           
             return render_template('addrecipe.html')
         
         return render_template("addrecipe.html")

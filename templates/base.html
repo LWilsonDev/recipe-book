@@ -18,13 +18,15 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{url_for('login')}}" class="">Login <i class="material-icons right">cloud</i></a></li>
-                <li><a class="">Signup <i class="material-icons right">edit</i></a></li>
+                <li><a href="{{url_for('signup')}}" class="">Signup <i class="material-icons right">edit</i></a></li>
                 <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
+
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                    <li><a href=#>Sign Up</a></li>
+                    <li><a href="{{url_for('signup')}}">Sign Up</a></li>
                     <li><a href="{{url_for('login')}}">Login</a></li>
                     <li><a href="{{url_for('addrecipe')}}">Add Recipe</a></li>
+
                 </ul>
         </div>
     </nav>

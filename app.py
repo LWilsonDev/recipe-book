@@ -15,11 +15,14 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    #if 'username' in session:
-        #return "You are logged in as " + session['username']
+
     return render_template('index.html', 
-    breakfast_recipes=mongo.db.recipes.find({"category": "Breakfast"}),
-    lunch_recipes=mongo.db.recipes.find({"category": "Lunch"}))
+        breakfast_recipes=mongo.db.recipes.find({"category": "Breakfast"}),
+        lunch_recipes=mongo.db.recipes.find({"category": "Lunch"}),
+        dinner_recipes=mongo.db.recipes.find({"category": "Dinner"}),
+        desert_recipes=mongo.db.recipes.find({"category": "Desert"}),
+        vegetarian_recipes=mongo.db.recipes.find({"vegetarian": "Vegetarian"}),
+        vegan_recipes=mongo.db.recipes.find({"vegetarian": "Vegan"}))
 
 # Login and Signup inc password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
 # https://www.youtube.com/watch?v=vVx1737auSE
@@ -45,7 +48,7 @@ def signup():
         
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({"username": request.form['username'], "password" : hashpass })
+            users.insert({"username": request.form['username'], "password": hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         return 'That username already exists!'
@@ -69,7 +72,7 @@ def addrecipe():
                             "ingredients": ingredient,
                             "vegetarian": request.form['vegetarian'],
                             "method": method
-            })
+                            })
             
            
             return render_template('addrecipe.html')
@@ -83,6 +86,42 @@ def recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
    
     return render_template('recipe.html', recipe=the_recipe)
+
+@app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
+def myrecipes(username):
+    user_recipes = mongo.db.recipes.find({"author": username})
+    return render_template('myrecipes.html', user_recipes=user_recipes,
+                           username=username)
+
+
+@app.route('/category/<category_name>', methods=['POST', 'GET'])
+def category(category_name):
+    if category_name == 'Vegetarian':
+        the_category = mongo.db.recipes.find({"vegetarian": "Vegetarian"})
+    elif category_name == 'Vegan':
+        the_category = mongo.db.recipes.find({"vegan": "Vegan"})
+    else:
+        the_category = mongo.db.recipes.find({"category": category_name})
+    return render_template('category.html', category_name=category_name, category=the_category)
+
+
+@app.route('/edit_recipe/<recipe_id>', methods=['POST', 'GET'])
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    if request.method == 'POST':
+        ingredient = request.form['ingredients'].splitlines()
+        method = request.form['method'].splitlines()
+
+        the_recipe.update({"title": request.form['title'],
+                        "category": request.form['category'],
+                        "author": session['username'],
+                        "description": request.form['description'],
+                        "ingredients": ingredient,
+                        "vegetarian": request.form['vegetarian'],
+                        "method": method
+                        })
+    return render_template("edit_recipe.html", the_recipe=the_recipe)
 
     
 if __name__ == '__main__':

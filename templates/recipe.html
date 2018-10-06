@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
 <h2>{{ recipe.title }}</h2>
+<h4>Recipe by <a href="{{url_for('myrecipes', username=recipe.author)}}">{{ recipe.author }}</a></h4>
+<p>{{recipe.description}}</p>
 <div class=row>
     <div class="col s12 m6">
         <div class="card-panel">

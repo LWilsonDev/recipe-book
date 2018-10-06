@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Add Recipe</h1>
+<h1>Edit Recipe</h1>
+<h2>{{ the_recipe.title }}</h2>
 <div class='container card-panel'>
-    <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
+    <form method="POST" class="col s12">
         <div class="row">
             <h4 class='form-header'>Recipe Category</h4>
             <div class="input-field col s12">
@@ -21,8 +22,8 @@
                 <select id="vegetarian" name="vegetarian">
                   <option value="" disabled selected>Vegetarian/vegan?</option>
                       <option value="not-veg">Not vegetarian</option>
-                      <option value="Vegetarian">Vegetarian</option>
-                      <option value="Vegan">Vegan</option>
+                      <option value="vegetarian">Vegetarian</option>
+                      <option value="vegan">Vegan</option>
                 </select>
             </div>
         </div>
@@ -33,7 +34,7 @@
         <h4 class='form-header'>Recipe Title</h4>
         <div class="input-field col s12">
 
-            <input name="title" type="text">
+            <input value="{{ the_recipe.title }}" name="title" type="text">
             <label>Recipe Title</label>
         </div>
     </div>
@@ -67,7 +68,10 @@
             <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
         </div>
 
-        <button class="btn waves-effect waves-light right" type="submit">Add Recipe
+        <button name="edit_recipe" class="btn waves-effect waves-light right" type="submit">Edit Recipe
+                <i class="material-icons right">playlist_add</i>
+             </button>
+        <button name="delete_recipe" class="btn waves-effect waves-light right red" type="submit">Delete Recipe
                 <i class="material-icons right">playlist_add</i>
              </button>
 

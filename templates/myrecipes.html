@@ -2,6 +2,18 @@
 
 <h2>{{ username }}'s Recipes</h2>
 <div class=row>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+   
+    
+      <h1>{{ message }}</h1>
+   
+   
+  {% endif %}
+{% endwith %}
+    
+    
+    
     <ul>
         {% for recipe in user_recipes %}
         <li><a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a></li>

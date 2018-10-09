@@ -1,29 +1,35 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Edit Recipe</h1>
-<h2>{{ the_recipe.title }}</h2>
+<h2>{{ recipe.title }}</h2>
 <div class='container card-panel'>
-    <form method="POST" class="col s12">
+    <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" >
         <div class="row">
             <h4 class='form-header'>Recipe Category</h4>
             <div class="input-field col s12">
 
                 <select id="category" name="category">
                   <option value="" disabled selected>Choose Category</option>
-                      <option value="Breakfast">Breakfast</option>
-                      <option value="Lunch">Lunch</option>
-                      <option value="Dinner">Dinner</option>
-                      <option value="BBQ">BBQ</option>
-                      <option value="Dessert">Dessert</option>
-                      <option value="Snacks">Snacks</option>
+                  {% for category in categories %}
+                  {% if category == recipe.category %}
+                      <option value="{{ category }}" selected>{{ category }}</option>
+                      {% else %}
+                      <option value="{{ category }}" >{{ category }}</option>
+                      {% endif %}
+                    {% endfor %}  
+                      
                 </select>
             </div>
             <div class="input-field col s12">
 
                 <select id="vegetarian" name="vegetarian">
                   <option value="" disabled selected>Vegetarian/vegan?</option>
-                      <option value="not-veg">Not vegetarian</option>
-                      <option value="vegetarian">Vegetarian</option>
-                      <option value="vegan">Vegan</option>
+                      {% for v in vege_list %}
+                  {% if v == recipe.vegetarian %}
+                      <option value="{{ v }}" selected>{{ v }}</option>
+                      {% else %}
+                      <option value="{{ v }}" >{{ v }}</option>
+                      {% endif %}
+                    {% endfor %} 
                 </select>
             </div>
         </div>
@@ -34,13 +40,13 @@
         <h4 class='form-header'>Recipe Title</h4>
         <div class="input-field col s12">
 
-            <input value="{{ the_recipe.title }}" name="title" type="text">
+            <input value="{{ recipe.title }}" name="title" type="text">
             <label>Recipe Title</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s12">
-            <textarea name="description" class="materialize-textarea"></textarea>
+            <textarea name="description" class="materialize-textarea">{{ recipe.description }}</textarea>
             <label>Brief description</label>
         </div>
     </div>
@@ -54,7 +60,8 @@
         <div class="ingredient-wrapper">
             <h4>Ingredients</h4>
             <div class="input-field col s12">
-            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g flour"></textarea>
+            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g flour">{% for ing in recipe.ingredients %}{{ ing }}
+{% endfor %}</textarea>
         </div>
 
         </div>
@@ -65,13 +72,14 @@
         <h4 class='form-header'>Method</h4>
         <p>Write the method in numbered steps. <strong>Press the 'enter' key between each new ingredient</strong></p>
         <div class="input-field col s12">
-            <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
+            <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans">{% for step in recipe.method %}{{ step }}
+{% endfor %}</textarea>
         </div>
 
-        <button name="edit_recipe" class="btn waves-effect waves-light right" type="submit">Edit Recipe
+        <button href="{{ url_for('update_recipe', recipe_id=recipe._id) }}" name="edit_recipe" class="btn waves-effect waves-light" type="submit">Confirm changes
                 <i class="material-icons right">playlist_add</i>
              </button>
-        <button name="delete_recipe" class="btn waves-effect waves-light right red" type="submit">Delete Recipe
+        <button href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" name="delete_recipe" class="btn waves-effect waves-light red" type="submit">Delete Recipe
                 <i class="material-icons right">playlist_add</i>
              </button>
 

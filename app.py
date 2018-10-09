@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, session, redirect,flash
+from flask import Flask, render_template, url_for, request, session, redirect, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -27,18 +27,25 @@ def index():
 # Login and Signup inc password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
 # https://www.youtube.com/watch?v=vVx1737auSE
 @app.route('/login', methods=['GET', 'POST'])
-
 def login():
-    users = mongo.db.users
-    login_user = users.find_one({'username' : request.form['username']})
+    
+    
     if request.method == 'POST':
+        users = mongo.db.users
+        login_user = users.find_one({'username' : request.form['username']})
         if login_user:
             if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
     
         return 'Invalid username/password combination'
-    return render_template('login')    
+    return render_template('login.html')    
+    
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    flash('You were logged out.')
+    return redirect(url_for('index'))
         
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -90,6 +97,7 @@ def recipe(recipe_id):
 @app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
 def myrecipes(username):
     user_recipes = mongo.db.recipes.find({"author": username})
+
     return render_template('myrecipes.html', user_recipes=user_recipes,
                            username=username)
 
@@ -108,21 +116,31 @@ def category(category_name):
 @app.route('/edit_recipe/<recipe_id>', methods=['POST', 'GET'])
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = ["Breakfast", "Lunch", "Dinner", "Dessert"]
+    vege_list = ["Not vegetarian", "Vegetarian", "Vegan"]
+    
+    return render_template("edit_recipe.html", recipe=the_recipe, categories=categories, vege_list=vege_list)
 
-    if request.method == 'POST':
-        ingredient = request.form['ingredients'].splitlines()
-        method = request.form['method'].splitlines()
-
-        the_recipe.update({"title": request.form['title'],
-                        "category": request.form['category'],
-                        "author": session['username'],
-                        "description": request.form['description'],
-                        "ingredients": ingredient,
-                        "vegetarian": request.form['vegetarian'],
-                        "method": method
-                        })
-    return render_template("edit_recipe.html", the_recipe=the_recipe)
-
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    ingredient = request.form['ingredients'].splitlines()
+    method = request.form['method'].splitlines()
+    recipes.update({'_id': ObjectId(recipe_id)},
+        {"title": request.form['title'],
+                    "category": request.form['category'],
+                    "author": session['username'],
+                    "description": request.form['description'],
+                    "ingredients": ingredient,
+                    "vegetarian": request.form['vegetarian'],
+                    "method": method
+                    })
+    return redirect(url_for('recipe', recipe_id=recipe_id))
+    
+@app.route('/delete_recipe/<recipe_id>', methods=["GET"])
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('myrecipes', username=session['username']))   
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

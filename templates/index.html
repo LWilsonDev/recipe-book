@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <div class="banner">
     <div class="intro-text">
-    <h1>Vanlife Recipes</h1>
+    <h1 class='title'>Vanlife Recipes</h1>
     <h4>The online campervan cookbook</h4>
     </div>
     
@@ -71,27 +71,6 @@
     </div>
     <div class="col s12 m6 l4">
         <div class="card">
-            <div class="card-image bbq-img waves-effect waves-block waves-light activator">
-                
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">BBQ<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='BBQ')}}">See all BBQ recipes</a></p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>BBQ Recipes</span>
-                <ul>
-                    {% for recipe in bbq_recipes %}
-                    <li>
-                        <a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m6 l4">
-        <div class="card">
             <div class="card-image dessert-img waves-effect waves-block waves-light activator">
                 
             </div>
@@ -113,7 +92,7 @@
     </div>
     <div class="col s12 m6 l4">
         <div class="card">
-            <div class="card-image dessert-img waves-effect waves-block waves-light activator">
+            <div class="card-image vegetarian-img waves-effect waves-block waves-light activator">
 
             </div>
             <div class="card-content">
@@ -134,11 +113,11 @@
     </div>
     <div class="col s12 m6 l4">
         <div class="card">
-            <div class="card-image dessert-img waves-effect waves-block waves-light activator">
+            <div class="card-image vegan-img waves-effect waves-block waves-light activator">
 
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Vegetarian Recipes<i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4">Vegan Recipes<i class="material-icons right">more_vert</i></span>
                 <p><a href="{{ url_for('category', category_name='Vegan')}}">See all Vegan recipes</a></p>
             </div>
             <div class="card-reveal">

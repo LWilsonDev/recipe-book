@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
+body{
+    color: #195567; 
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
 .card-image {
     height: 300px;
     width: 100%;
@@ -12,32 +22,45 @@
 
 
 .breakfast-img {
-    background-image: url("../images/jenn-kosar-584038-unsplash.jpg");
+    background-image: url("https://images.unsplash.com/photo-1528301392571-0dfab3c00216?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d9cf7b5db701b7e7a025f413d16d162&auto=format&fit=crop&w=400&q=80");
 }
 
 .lunch-img {
-    background-image: url("../images/oscar-nord-627731-unsplash.jpg");
+    background-image: url("https://images.unsplash.com/photo-1526311444844-a6a2c8f730b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7cd101550b6c0468af091485aeef827f&auto=format&fit=crop&w=357&q=80");
 }
 
 .dinner-img {
-    background-image: url("../images/christine-siracusa-385441-unsplash.jpg");
-}
-
-.bbq-img {
-    background-image: url("../images/alexey-ruban-98474-unsplash.jpg");
+    background-image: url("https://images.unsplash.com/photo-1520218508822-998633d997e6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9a367c42f6b4004f2c0e7f396778a192&auto=format&fit=crop&w=334&q=80");
 }
 
 .dessert-img {
-    background-image: url("../images/natural-chef-carolyn-nicholas-560111-unsplash.jpg");
+    background-image: url("https://images.unsplash.com/photo-1518710101263-54e0350377bb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=44efc884b965a63f27fe028b8b3601e3&auto=format&fit=crop&w=334&q=80");
 }
 
+.vegetarian-img {
+    background-image: url("https://images.unsplash.com/photo-1511910849309-0dffb8785146?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cb677eb9f83408ece2d78918458f1cb4&auto=format&fit=crop&w=334&q=80");
+}
+
+.vegan-img {
+    background-image: url("https://images.unsplash.com/photo-1532768864916-b9773a6a4cc9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=02b293489fee0bb08e907cca3271399f&auto=format&fit=crop&w=361&q=80");
+}
+
+.title {
+    font-family: "chicle", cursive;
+    text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 
+                0px -5px 35px rgba(255,255,255,0.3), 
+                2px 2px 2px rgba(80,7,164,0), 
+                2px 2px 2px rgba(80,7,164,0);
+    font-size: 6rem;            
+               
+}
 .banner {
     width: 100%;
     height: 50vh;
     
   display: block;
   position: relative;
-  
+ 
 
     
     
@@ -50,7 +73,7 @@
   content: "";
   
     
-  background-image: url("../images/franck-v-515184-unsplash.jpg");
+  background-image: url("https://images.unsplash.com/photo-1516029804124-780c5997c18e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e9e9e546fbb867a49255f774ebc6f37&auto=format&fit=crop&w=667&q=80");
   background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -69,5 +92,6 @@
 
 .mynav {
     background-color: #58b9c3f7;
+    color: #195567;
   
 }

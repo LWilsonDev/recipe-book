@@ -38,13 +38,13 @@ def login():
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
     
-        return 'Invalid username/password combination'
+        flash('Invalid username/password combination')
+        return render_template('login.html') 
     return render_template('login.html')    
     
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    flash('You were logged out.')
     return redirect(url_for('index'))
         
 @app.route('/signup', methods=['POST', 'GET'])
@@ -58,10 +58,12 @@ def signup():
             users.insert({"username": request.form['username'], "password": hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
-        return 'That username already exists!'
+            
+        flash('That username already exists!')
+        return render_template('signup.html')
+    return render_template('signup.html')    
         
-    return render_template('signup.html')
-
+    
 @app.route('/addrecipe', methods=['POST', 'GET'])
 def addrecipe():
     
@@ -86,8 +88,8 @@ def addrecipe():
             return render_template('addrecipe.html')
         
         return render_template("addrecipe.html")
-
-    return "please login to add a recipe"        
+    flash("please login to add a recipe")
+    return render_template("login.html")        
 
 @app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
 def recipe(recipe_id):

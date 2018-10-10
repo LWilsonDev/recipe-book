@@ -1,25 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 
-
-<h1>Add Recipe</h1>
-<div class='container card-panel'>
+<div class="text-center">
+<h1 class="page-title">Add Recipe</h1>
+</div>
+<div class='container card-panel margin-auto'>
     <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
         <div class="row">
             <h4 class='form-header'>Recipe Category</h4>
             <div class="input-field col s12">
 
-                <select id="category" name="category">
+                <select required id="category" name="category" >
                   <option value="" disabled selected>Choose Category</option>
                       <option value="Breakfast">Breakfast</option>
-                      <option value="Lunch">Lunch</option>
+                      <option value="Lunch">Lunch/Salad</option>
                       <option value="Dinner">Dinner</option>
                       <option value="Dessert">Dessert</option>
-                      <option value="Snacks">Snacks</option>
                 </select>
             </div>
             <div class="input-field col s12">
 
-                <select id="vegetarian" name="vegetarian">
+                <select required id="vegetarian" name="vegetarian" >
                   <option value="" disabled selected>Vegetarian/vegan?</option>
                       <option value="not-veg">Not vegetarian</option>
                       <option value="Vegetarian">Vegetarian</option>
@@ -29,19 +29,19 @@
         </div>
 
 </div>
-<div class='container card-panel'>
+<div class='container card-panel margin-auto'>
     <div class="row">
         <h4 class='form-header'>Recipe Title</h4>
         <div class="input-field col s12">
 
-            <input name="title" type="text">
+            <input name="title" type="text" required>
             <label>Recipe Title</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s12">
-            <textarea name="description" class="materialize-textarea"></textarea>
-            <label>Brief description</label>
+            <textarea name="description" class="materialize-textarea" placeholder="e.g. 10 mins cooking time, serves 4"></textarea>
+            <label>Timings/Servings etc.</label>
         </div>
     </div>
 </div>
@@ -49,19 +49,18 @@
 
 
 
-<div class='container card-panel'>
+<div class='container card-panel margin-auto'>
     <div class="row">
         <h4 class='form-header'>Ingredients</h4>
         <p>Start a new line for each ingredient</p>
         <div class="input-field col s12">
-            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g Flour"></textarea>
+            <textarea name="ingredients" class="materialize-textarea" placeholder="e.g. 100g Flour"></textarea>
         </div>
     </div>
 </div>
-<div class='container card-panel'>
+<div class='container card-panel margin-auto'>
     <div class="row">
         <h4 class='form-header'>Method</h4>
-        <p>Write the method in numbered steps. Start a new line for each step.
         <div class="input-field col s12">
             <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
         </div>

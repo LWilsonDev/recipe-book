@@ -1,18 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 <div class=row>
-<h2>{{ username }}'s Recipes</h2>
+<h2 class="page-title">{{ username }}'s Recipes</h2>
 
   {% if username == session['username'] %}  
-  {% if user_recipes.title not in user_recipes %}
    
-    
-      <h6>Looks like you dont have any recipes yet.</h6>
       
       
       <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a>
+      <h5>Click on a recipe to edit or delete</h5>
    
-   
-  {% endif %}
   {% endif %}
 
     

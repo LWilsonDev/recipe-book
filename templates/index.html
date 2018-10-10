@@ -2,11 +2,11 @@
 <div class="banner">
     <div class="intro-text">
     <h1 class='title'>Vanlife Recipes</h1>
-    <h4>The online campervan cookbook</h4>
-    <p class="lead-text">Recipes compiled by campervan enthusiasts for life on the road</p>
-    <hr class="med-blue-hr">
+    <h4>The campervan cookbook</h4>
+    <p class="lead-text">Recipes for life on the road</p>
+    
     {% if 'username' not in session %}
-        <p>Sign Up to add your recipes</p>            
+    <hr class="med-blue-hr">
         <a href="{{url_for('signup')}}" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Sign Up</a>
         <p>Already registered? Login <a href="{{url_for('login')}}">here</a></p>
                     
@@ -24,10 +24,11 @@
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Breakfast<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='Breakfast')}}">See all Breakfast recipes</a></p>
+                
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Breakfast Recipes</span>
+                <p><a href="{{ url_for('category', category_name='Breakfast')}}"><span class="underline">See all Breakfast recipes</span></a></p>
                 <ul>
                     {% for recipe in breakfast_recipes %}
                     <li>
@@ -43,11 +44,11 @@
             <div class="card-image lunch-img waves-effect waves-block waves-light activator">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Lunch<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='Lunch')}}">See all Lunch recipes</a></p>
+                <span class="card-title activator grey-text text-darken-4">Lunch/Salad<i class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Lunch Recipes</span>
+                <p><a href="{{ url_for('category', category_name='Lunch')}}"><span class="underline">See all Lunch/Salad recipes</span></a></p>
                 <ul>
                     {% for recipe in lunch_recipes %}
                     <li>
@@ -64,10 +65,10 @@
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Dinner<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='Dinner')}}">See all Dinner recipes</a></p>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Dinner Recipes</span>
+                <p><a href="{{ url_for('category', category_name='Dinner')}}"><span class="underline">See all Dinner recipes</span></a></p>
                 <ul>
                     {% for recipe in dinner_recipes %}
                     <li>
@@ -85,10 +86,10 @@
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">Dessert<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='Dessert')}}">See all Dessert recipes</a></p>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Dessert Recipes</span>
+                <p><a href="{{ url_for('category', category_name='Dessert')}}"><span class="underline">See all Dessert recipes</span></a></p>
                 <ul>
                     {% for recipe in dessert_recipes %}
                     <li>
@@ -105,11 +106,11 @@
 
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Vegetarian Recipes<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='Vegetarian')}}">See all Vegetarian recipes</a></p>
+                <span class="card-title activator grey-text text-darken-4">Vegetarian<i class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Vegetarian Recipes</span>
+                <p><a href="{{ url_for('category', category_name='Vegetarian')}}"><span class="underline">See all Vegetarian recipes</span></a></p>
                 <ul>
                     {% for recipe in vegetarian_recipes %}
                     <li>
@@ -126,11 +127,11 @@
 
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Vegan Recipes<i class="material-icons right">more_vert</i></span>
-                <p><a href="{{ url_for('category', category_name='Vegan')}}">See all Vegan recipes</a></p>
+                <span class="card-title activator grey-text text-darken-4">Vegan<i class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Vegan Recipes</span>
+                <p><a href="{{ url_for('category', category_name='Vegan')}}"><span class="underline">See all Vegan recipes</span></a></p>
                 <ul>
                     {% for recipe in vegan_recipes %}
                     <li>

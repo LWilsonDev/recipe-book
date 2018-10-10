@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Sign Up</h1>
+<h1 class="page-title">Sign Up</h1>
 <form method="POST" >
     <input type=text name="username" placeholder="username" required/>
     <input type="password" name="password" placeholder="password" required/>
@@ -7,6 +7,19 @@
                 <i class="material-icons right">edit</i>
              </button>
 </form>
+        <p>Already registered? Login <a href="{{url_for('login')}}">here</a></p>
+<div class="flex-container">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class=flashes>
+    {% for message in messages %}
+      <h6>{{ message }}</h6>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+</div>
+
 
 
 {% endblock %}

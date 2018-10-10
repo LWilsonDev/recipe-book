@@ -1,7 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Edit Recipe</h1>
+<div class="margin-auto">
+    <div class="text-center">
+<h1 class="page-title">Edit Recipe</h1>
 <h2>{{ recipe.title }}</h2>
-<div class='container card-panel'>
+</div>
+<div class='container card-panel margin-auto'>
     <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST" >
         <div class="row">
             <h4 class='form-header'>Recipe Category</h4>
@@ -35,7 +38,7 @@
         </div>
 
 </div>
-<div class='container card-panel'>
+<div class='container card-panel margin-auto'>
     <div class="row">
         <h4 class='form-header'>Recipe Title</h4>
         <div class="input-field col s12">
@@ -47,7 +50,7 @@
     <div class="row">
         <div class="input-field col s12">
             <textarea name="description" class="materialize-textarea">{{ recipe.description }}</textarea>
-            <label>Brief description</label>
+            <label>Timings/Servings etc.</label>
         </div>
     </div>
 </div>
@@ -55,7 +58,7 @@
 
 
 
-<div class='container card-panel'>
+<div class='container card-panel margin-auto'>
     <div class="row">
         <div class="ingredient-wrapper">
             <h4>Ingredients</h4>
@@ -67,10 +70,9 @@
         </div>
     </div>
 </div>
-<div class='container card-panel'>
+<div class='container card-panel margin-auto'>
     <div class="row">
         <h4 class='form-header'>Method</h4>
-        <p>Write the method in numbered steps. <strong>Press the 'enter' key between each new ingredient</strong></p>
         <div class="input-field col s12">
             <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans">{% for step in recipe.method %}{{ step }}
 {% endfor %}</textarea>
@@ -87,5 +89,5 @@
 </div>
 </form>
 
-
+</div>
 {% endblock %}

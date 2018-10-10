@@ -1,16 +1,20 @@
 {% extends 'base.html' %} {% block content %}
-
-<h2>{{ username }}'s Recipes</h2>
 <div class=row>
-    {% with messages = get_flashed_messages() %}
-  {% if messages %}
+<h2>{{ username }}'s Recipes</h2>
+
+  {% if username == session['username'] %}  
+  {% if user_recipes.title not in user_recipes %}
    
     
-      <h1>{{ message }}</h1>
+      <h6>Looks like you dont have any recipes yet.</h6>
+      
+      
+      <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a>
    
    
   {% endif %}
-{% endwith %}
+  {% endif %}
+
     
     
     

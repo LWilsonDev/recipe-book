@@ -143,16 +143,7 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('myrecipes', username=session['username']))   
     
-@app.route('/upvote/<recipe_id>', methods=['GET'])
-def upvote(recipe_id):
-    recipes = mongo.db.recipes
-    the_recipe = recipes.find({'_id': ObjectId(recipe_id)})
-    current_likes = the_recipe.likes
-    new_likes= current_likes + 1
-    recipes.update({'_id': ObjectId(recipe_id)},
-                {"likes": new_likes})
-    return redirect(url_for('recipe', recipe_id=recipe_id))
-    
+
  
     
 if __name__ == '__main__':

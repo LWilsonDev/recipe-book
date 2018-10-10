@@ -15,4 +15,16 @@ https://unsplash.com/photos/MDEFsdiVXK4 Photo by Franck V. on Unsplash -VW
 # https://www.youtube.com/watch?v=vVx1737auSE
 
 
+
+To do:
+
+Likes: thumbs up and down
+likes count in database
+show likes on recipe list?
+order recipe by likes
+pagination - what happens when recipe list is long
+CSS - centering add recipe form
+Testing
+write up readme
+
   

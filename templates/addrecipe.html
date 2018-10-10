@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+
 <h1>Add Recipe</h1>
 <div class='container card-panel'>
     <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
@@ -50,19 +51,17 @@
 
 <div class='container card-panel'>
     <div class="row">
-        <div class="ingredient-wrapper">
-            <h4>Ingredients</h4>
-            <div class="input-field col s12">
-            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g flour"></textarea>
-        </div>
-
+        <h4 class='form-header'>Ingredients</h4>
+        <p>Start a new line for each ingredient</p>
+        <div class="input-field col s12">
+            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g Flour"></textarea>
         </div>
     </div>
 </div>
 <div class='container card-panel'>
     <div class="row">
         <h4 class='form-header'>Method</h4>
-        <p>Write the method in numbered steps. <strong>Press the 'enter' key between each new ingredient</strong></p>
+        <p>Write the method in numbered steps. Start a new line for each step.
         <div class="input-field col s12">
             <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
         </div>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class='row'>
-    <div class="col s12">
+    <div class="col s12 text-center">
         <h2 class="page-title">{{ recipe.title }}</h2>
 
         {% if session['username'] == recipe.author %}
@@ -9,7 +9,7 @@
         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn red">Delete</a> {% endif %}
 
 
-        <p>{{recipe.description}}</p>
+        <p>Timings/Servings: {{recipe.description}}</p>
     </div>
 </div>
 <div class=row>

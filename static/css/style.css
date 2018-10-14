@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
 body{
-    color: #195567; 
+    color: #195567;
+   
 }
 
 .flex-container {
@@ -98,7 +99,7 @@ body{
 }
 
 .lead-text {
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 10px;
 }
 
@@ -110,6 +111,12 @@ body{
     margin-bottom: 20px;
     
 }
+
+.signup-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .text-center{
     text-align: center;
 }
@@ -142,21 +149,61 @@ body{
   
 }
 
+.side-nav {
+    background-color: #58b9c3;
+    color: #195567;
+}
+
+.blue-footer {
+    background-color: #9dddd9;
+}
+
+.social-icon-li {
+    display: inline-block;
+    margin-bottom: 40px;
+    
+}
+.social-icon {
+    transition-property: text-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    color: #58b9c3f7;
+    font-size: 32px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.social-icon:hover{
+    text-shadow: 0 0 10px #fff;
+}
+
+.social {
+    text-align: center;
+}
+
 .btn {
     background-color: #58b9c3f7;
 }
-
 .brand-logo {
+    visibility: hidden;
+}
+
+
+.social-icon-list {
+    display: inline;
+}
+
+@media (min-width: 768px) {
+     .brand-logo {
+         visibility: visible;
     font-family: "chicle", cursive;
     text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 
                 0px -5px 35px rgba(255,255,255,0.3), 
                 2px 2px 2px rgba(80,7,164,0), 
                 2px 2px 2px rgba(80,7,164,0);
-    font-size: 3rem; 
+    font-size: 1.8rem; 
     margin-left: 20px;
     margin-right: 20px;
 }
-
-.social-icon-list {
-    display: inline;
 }

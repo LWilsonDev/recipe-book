@@ -26,10 +26,6 @@
                     <li><a href="{{url_for('login')}}" class="">Login <i class="material-icons right">person</i></a></li>
                     <li><a href="{{url_for('signup')}}" class="">Signup <i class="material-icons right">edit</i></a></li>
                 {% endif %}
-                
-                
-               
-
             </ul>
             <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{url_for('index')}}" class="">Home <i class="material-icons right">home</i></a></li>
@@ -43,22 +39,43 @@
                 {% endif %}
         </div>
     </nav>
+
     <div class="container flex-container">
 
         {% block content %} {% endblock %}
     </div>
-    <footer>
-        <div class="container flex-container-vert social">
+ <footer class="page-footer blue-footer">
+          <div class="container text-center">
+            <div class="row">
+              <div class="col s12">
+                <h5>Show us your photos!</h5>
+                <p class="social-text">Join us on social media to share your vanlife recipe photos and adventures!</p>
+              </div>
+              <div class="col s12 social">
+                
+                <ul class="social-icon-list">
+                  
             
-            <ul class="social-icon-list">
-           <li><a><i class="fab fa-instagram"></i></a></li>
-           <li><a><i class="fab fa-facebook"></i></a></li>
-           <li><a><i class="fab fa-twitter"></i></a></li>
+            
+           <li class="social-icon-li"><a href=""><i class="fab fa-instagram social-icon"></i></a></li>
+           <li class="social-icon-li"><a href=""><i class="fab fa-facebook social-icon"></i></a></li>
+           <li class="social-icon-li"><a href=""><i class="fab fa-twitter social-icon"></i></a></li>
            </ul>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">Contact Us</a>
+            </div>
+          </div>
+        </footer>
+
+        
            
-            
-        </div>
-    </footer>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">

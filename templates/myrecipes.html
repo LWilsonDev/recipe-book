@@ -1,26 +1,17 @@
 {% extends 'base.html' %} {% block content %}
-<div class=row>
+<div class="row text-center">
 <h2 class="page-title">{{ username }}'s Recipes</h2>
 
   {% if username == session['username'] %}  
-   
-      
-      
       <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a>
-      <h5>Click on a recipe to edit or delete</h5>
-   
   {% endif %}
 
-    
-    
-    
     <ul>
         {% for recipe in user_recipes %}
         <li><a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a></li>
 
         {% endfor %}
     </ul>
-
 
 </div>
 

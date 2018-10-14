@@ -20,7 +20,7 @@ def index():
         breakfast_recipes=mongo.db.recipes.find({"category": "Breakfast"}),
         lunch_recipes=mongo.db.recipes.find({"category": "Lunch"}),
         dinner_recipes=mongo.db.recipes.find({"category": "Dinner"}),
-        desert_recipes=mongo.db.recipes.find({"category": "Desert"}),
+        dessert_recipes=mongo.db.recipes.find({"category": "Dessert"}),
         vegetarian_recipes=mongo.db.recipes.find({"vegetarian": "Vegetarian"}),
         vegan_recipes=mongo.db.recipes.find({"vegetarian": "Vegan"}))
 
@@ -99,7 +99,7 @@ def recipe(recipe_id):
 
 @app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
 def myrecipes(username):
-    user_recipes = mongo.db.recipes.find({"author": username})
+    user_recipes = mongo.db.recipes.find({"author": username})    
 
     return render_template('myrecipes.html', user_recipes=user_recipes,
                            username=username)

@@ -80,16 +80,16 @@ def addrecipe():
                             "description": request.form['description'],
                             "ingredients": ingredient,
                             "vegetarian": request.form['vegetarian'],
-                            "method": method,
-                            "likes": 0
+                            "method": method
                             })
             
            
-            return render_template('addrecipe.html')
+            return redirect(url_for("myrecipes", username=session['username']))
         
         return render_template("addrecipe.html")
     flash("please login to add a recipe")
-    return render_template("login.html")        
+    return render_template("login.html") 
+    
 
 @app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
 def recipe(recipe_id):

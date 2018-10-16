@@ -116,7 +116,7 @@ body{
 }
 
 .page-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 1em;
 }
 
@@ -146,6 +146,10 @@ body{
 
 .blue-footer {
     background-color: #9dddd9;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .social-icon-li {

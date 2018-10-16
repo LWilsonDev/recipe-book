@@ -10,7 +10,7 @@
                 <h4 class='form-header'>Recipe Category</h4>
                 <div class="input-field col s12">
 
-                    <select id="category" name="category">
+                    <select class="category_wrapper" id="category" name="category">
                   <option value="" disabled selected>Choose Category</option>
                   {% for category in categories %}
                   {% if category == recipe.category %}
@@ -24,7 +24,7 @@
                 </div>
                 <div class="input-field col s12">
 
-                    <select id="vegetarian" name="vegetarian">
+                    <select class="vege_wrapper" id="vegetarian" name="vegetarian">
                   <option value="" disabled selected>Vegetarian/vegan?</option>
                       {% for v in vege_list %}
                   {% if v == recipe.vegetarian %}

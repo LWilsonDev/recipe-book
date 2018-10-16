@@ -24,10 +24,7 @@ body{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    
 }
-
-
 
 .breakfast-img {
     background-image: url("https://images.unsplash.com/photo-1528301392571-0dfab3c00216?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d9cf7b5db701b7e7a025f413d16d162&auto=format&fit=crop&w=400&q=80");
@@ -60,29 +57,25 @@ body{
                 2px 2px 2px rgba(80,7,164,0), 
                 2px 2px 2px rgba(80,7,164,0);
     font-size: 6rem;            
-               
 }
+
 .banner {
     width: 100%;
     height: 90%;
-    
- 
-  position: relative;
-    
+    position: relative;
     text-align: center;
     display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
+
 .banner::after {
   content: "";
-  
-    
   background-image: url("https://images.unsplash.com/photo-1516029804124-780c5997c18e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e9e9e546fbb867a49255f774ebc6f37&auto=format&fit=crop&w=667&q=80");
   background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
   opacity: 0.6;
   top: 0;
   left: 0;
@@ -93,9 +86,7 @@ body{
 }
 
 .intro-text {
-    
     padding: 3% 5%;
-    
 }
 
 .lead-text {
@@ -109,7 +100,6 @@ body{
     background-color: #195567;
     border: none;
     margin-bottom: 20px;
-    
 }
 
 .signup-btn {
@@ -185,6 +175,7 @@ body{
 .btn {
     background-color: #58b9c3f7;
 }
+
 .brand-logo {
     visibility: hidden;
 }
@@ -196,14 +187,14 @@ body{
 
 @media (min-width: 768px) {
      .brand-logo {
-         visibility: visible;
-    font-family: "chicle", cursive;
-    text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 
-                0px -5px 35px rgba(255,255,255,0.3), 
-                2px 2px 2px rgba(80,7,164,0), 
-                2px 2px 2px rgba(80,7,164,0);
-    font-size: 1.8rem; 
-    margin-left: 20px;
-    margin-right: 20px;
-}
+        visibility: visible;
+        font-family: "chicle", cursive;
+        text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 
+                    0px -5px 35px rgba(255,255,255,0.3), 
+                    2px 2px 2px rgba(80,7,164,0), 
+                    2px 2px 2px rgba(80,7,164,0);
+        font-size: 1.8rem; 
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }

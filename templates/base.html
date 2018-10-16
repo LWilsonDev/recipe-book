@@ -19,63 +19,53 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 {% if 'username' in session %}
-                    <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">{{ session['username'] }}'s Recipes <i class="material-icons right">restaurant</i></a></li>
-                    <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
-                    <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
-                    {% else %}
-                    <li><a href="{{url_for('login')}}" class="">Login <i class="material-icons right">person</i></a></li>
-                    <li><a href="{{url_for('signup')}}" class="">Signup <i class="material-icons right">edit</i></a></li>
+                <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">{{ session['username'] }}'s Recipes <i class="material-icons right">restaurant</i></a></li>
+                <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
+                <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}" class="">Login <i class="material-icons right">person</i></a></li>
+                <li><a href="{{url_for('signup')}}" class="">Signup <i class="material-icons right">edit</i></a></li>
                 {% endif %}
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('index')}}" class="">Home <i class="material-icons right">home</i></a></li>
-                    {% if 'username' in session %}
-                    <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">{{ session['username'] }}'s Recipes <i class="material-icons right">restaurant</i></a></li>
-                    <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
-                    <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
-                    {% else %}
-                    <li><a href="{{url_for('login')}}" class="">Login <i class="material-icons right">person</i></a></li>
-                    <li><a href="{{url_for('signup')}}" class="">Signup <i class="material-icons right">edit</i></a></li>
+                <li><a href="{{url_for('index')}}" class="">Home <i class="material-icons right">home</i></a></li>
+                {% if 'username' in session %}
+                <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">{{ session['username'] }}'s Recipes <i class="material-icons right">restaurant</i></a></li>
+                <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
+                <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}" class="">Login <i class="material-icons right">person</i></a></li>
+                <li><a href="{{url_for('signup')}}" class="">Signup <i class="material-icons right">edit</i></a></li>
                 {% endif %}
         </div>
     </nav>
-
     <div class="container flex-container">
-
         {% block content %} {% endblock %}
     </div>
- <footer class="page-footer blue-footer">
-          <div class="container text-center">
+    <footer class="page-footer blue-footer">
+        <div class="container text-center">
             <div class="row">
-              <div class="col s12">
-                <h5>Show us your photos!</h5>
-                <p class="social-text">Join us on social media to share your vanlife recipe photos and adventures!</p>
-              </div>
-              <div class="col s12 social">
-                
-                <ul class="social-icon-list">
-                  
-            
-            
-           <li class="social-icon-li"><a href=""><i class="fab fa-instagram social-icon"></i></a></li>
-           <li class="social-icon-li"><a href=""><i class="fab fa-facebook social-icon"></i></a></li>
-           <li class="social-icon-li"><a href=""><i class="fab fa-twitter social-icon"></i></a></li>
-           </ul>
-                </ul>
-              </div>
+                <div class="col s12">
+                    <h5>Show us your photos!</h5>
+                    <p class="social-text">Join us on social media to share your vanlife recipe photos and adventures!</p>
+                </div>
+                <div class="col s12 social">
+                    <ul class="social-icon-list">
+                        <li class="social-icon-li"><a href=""><i class="fab fa-instagram social-icon"></i></a></li>
+                        <li class="social-icon-li"><a href=""><i class="fab fa-facebook social-icon"></i></a></li>
+                        <li class="social-icon-li"><a href=""><i class="fab fa-twitter social-icon"></i></a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-            © 2018 Copyright
-            <a class="grey-text text-lighten-4 right" href="#!">Contact Us</a>
+                © 2018 Copyright
+                <a class="grey-text text-lighten-4 right" href="#!">Contact Us</a>
             </div>
-          </div>
-        </footer>
+        </div>
+    </footer>
 
-        
-           
-  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">
@@ -83,15 +73,12 @@
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
-            
+
             var newFormField = '<div class="input-field col s3"><input id="quantity" name="quantity" type="text"><label for="quantity">Quantity</label></div><div class="input-field col s9"><input id="ingredient" name="ingredient" type="text"><label for="ingredient">Ingredient</label></div>';
             $('#addIngredient').click(function(event) {
                 event.preventDefault();
                 $('.ingredient-wrapper').append(newFormField);
             });
-            
-            
-            
         });
     </script>
 </body>

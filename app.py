@@ -29,22 +29,22 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     
-    
     if request.method == 'POST':
         users = mongo.db.users
         login_user = users.find_one({'username' : request.form['username']})
         if login_user:
             if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
                 session['username'] = request.form['username']
+                flash('Welcome back, ' + session['username'])
                 return redirect(url_for('index'))
     
-        flash('Invalid username/password combination')
-        return render_template('login.html') 
-    return render_template('login.html')    
+        flash('Invalid username/password')        
+    return render_template('index.html')
     
 @app.route('/logout')
 def logout():
     session.pop('username', None)
+    flash('Logged out')
     return redirect(url_for('index'))
         
 @app.route('/signup', methods=['POST', 'GET'])
@@ -57,11 +57,12 @@ def signup():
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert({"username": request.form['username'], "password": hashpass})
             session['username'] = request.form['username']
+            flash("Welcome, " + session['username'])
             return redirect(url_for('index'))
             
-        flash('That username already exists!')
-        return render_template('signup.html')
-    return render_template('signup.html')    
+    flash('That username already exists!')
+    return redirect(url_for('index'))
+    
         
     
 @app.route('/addrecipe', methods=['POST', 'GET'])

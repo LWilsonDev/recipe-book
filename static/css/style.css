@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Chicle');
 
 body{
-    color: #195567;
+    color:  #195567;
+    background-color: #53a4b09e;
    
+}
+.full-width {
+      width: 100%;
+}
+.min-height {
+    min-height: 55vh;
 }
 
 .flex-container {
@@ -56,42 +63,34 @@ body{
                 0px -5px 35px rgba(255,255,255,0.3), 
                 2px 2px 2px rgba(80,7,164,0), 
                 2px 2px 2px rgba(80,7,164,0);
-    font-size: 6rem;            
+    font-size: 4rem;            
 }
 
 .banner {
-    width: 100%;
-    height: 90%;
-    position: relative;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
+    background-color: #f5913cf7;
+    height: 80vh;
 }
 
-.banner::after {
-  content: "";
-  background-image: url("https://images.unsplash.com/photo-1516029804124-780c5997c18e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1e9e9e546fbb867a49255f774ebc6f37&auto=format&fit=crop&w=667&q=80");
+.van-pic {
+  width: 100%;
+    height: 80vh;
+  background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.6;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -2;   
+  
 }
+
 
 .intro-text {
     padding: 3% 5%;
+    text-align: center;
 }
 
 .lead-text {
-    font-size: 2em;
+    font-size: 1.2em;
     padding: 10px;
+    
 }
 
 .med-blue-hr{
@@ -99,12 +98,13 @@ body{
     height: 8px;
     background-color: #195567;
     border: none;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-.signup-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.login-btns {
+    margin: 10px auto;
+    display: block;
 }
 
 .text-center{
@@ -123,18 +123,19 @@ body{
 .flashes{
     width: 100%;
     height: 38px;
-    background-color: #5dbbc54a;
+    background-color: #ffec0b9e;
     text-align: center;
     padding: 4px;
     border-radius: 8px;
-    margin-top: 10px;
+    margin: 15px auto;
 }
 .underline {
     text-decoration: underline;
 }
 
 .mynav {
-    background-color: #58b9c3f7;
+    background-color: #4ca6af;
+    
     color: #195567;
   
 }
@@ -145,7 +146,7 @@ body{
 }
 
 .blue-footer {
-    background-color: #9dddd9;
+    background-color: #f5913cf7;
     position: relative;
     bottom: 0;
     left: 0;
@@ -161,7 +162,7 @@ body{
     transition-property: text-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-    color: #58b9c3f7;
+    color:  #195567;
     font-size: 32px;
     margin-left: 10px;
     margin-right: 10px;
@@ -200,5 +201,18 @@ body{
         font-size: 1.8rem; 
         margin-left: 20px;
         margin-right: 20px;
+    }
+    .title {
+        font-size: 5rem;
+    }
+    .lead-text {
+    font-size: 1.5em;
+    }
+    .login-btns {
+    margin: 20px auto;
+    width: 200px;
+    }
+    .intro-text {
+        margin: 10px;
     }
 }

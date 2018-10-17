@@ -1,21 +1,26 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-  <header>
+<header>
+  <div class="row">
     <div class="col s12 text-center">
       <h2 class="page-title">{{ username }}'s Recipes</h2>
     </div>
-  </header>
-  <main>
-    <div class="col s12 text-center">
-      {% if username == session['username'] %}
-      <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a> {% endif %}
-      <ul>
-        {% for recipe in user_recipes %}
-        <li><a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a></li>
-        {% endfor %}
-      </ul>
+  </div>
+</header>
+<main>
+  <div class="container min-height">
+    <div class="row">
+      <div class="col s12 text-center">
+        {% if username == session['username'] %}
+        <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a> {% endif %}
+        <ul>
+          {% for recipe in user_recipes %}
+          <li><a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-  </main>
-</div>
+  </div>
+</main>
+
 {% endblock %}

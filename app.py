@@ -111,7 +111,7 @@ def category(category_name):
     if category_name == 'Vegetarian':
         the_category = mongo.db.recipes.find({"vegetarian": "Vegetarian"})
     elif category_name == 'Vegan':
-        the_category = mongo.db.recipes.find({"vegan": "Vegan"})
+        the_category = mongo.db.recipes.find({"vegetarian": "Vegan"})
     else:
         the_category = mongo.db.recipes.find({"category": category_name})
     return render_template('category.html', category_name=category_name, category=the_category)

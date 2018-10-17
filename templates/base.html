@@ -14,10 +14,21 @@
 
 <body>
     <nav class="mynav">
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
+            <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
+            <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
+            <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
+            <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
+            <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
+        </ul>
         <div class="nav-wrapper">
             <a href="{{url_for('index')}}" class="brand-logo">Vanlife Recipes</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Recipes<i class="material-icons right">arrow_drop_down</i></a></li>
                 {% if 'username' in session %}
                 <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
                 <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
@@ -37,42 +48,50 @@
                 <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>
                 <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
                 {% endif %}
+                <h5 class="side-nav-cat">Recipes</h5>
+                <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
+                <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
+                <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
+                <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
+                <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
+                <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
+            </ul>
         </div>
     </nav>
     <div>
         <div id="login" class="modal">
-                    <div class="modal-content">
-                        <h4>Log In</h4>
-                        <form method=POST action="{{ url_for('login') }}">
-                            <input type="text" name="username" placeholder="username" required/>
-                            <input type="password" name="password" placeholder="password" required/>
+            <div class="modal-content">
+                <h4>Log In</h4>
+                <form method=POST action="{{ url_for('login') }}">
+                    <input type="text" name="username" placeholder="username" required/>
+                    <input type="password" name="password" placeholder="password" required/>
 
 
-                    </div>
-                    <div class="modal-footer">
-                        
-                        <button href="{{url_for('login')}}" type="submit" name="Login" class="btn modal-action modal-close waves-effect green">Log In <i class="material-icons left">person</i></button>
+            </div>
+            <div class="modal-footer">
 
-                    </div>
-                    </form>
-                </div>
-                <div id="register" class="modal">
-                    <div class="modal-content">
-                        <h4>Register</h4>
-                        <form method=POST action="{{ url_for('signup') }}">
-                            <input type="text" name="username" placeholder="username" required/>
-                            <input type="password" name="password" placeholder="password" required/>
+                <button href="{{url_for('login')}}" type="submit" name="Login" class="btn modal-action modal-close waves-effect green">Log In <i class="material-icons left">person</i></button>
+
+            </div>
+            </form>
+        </div>
+        <div id="register" class="modal">
+            <div class="modal-content">
+                <h4>Register</h4>
+                <form method=POST action="{{ url_for('signup') }}">
+                    <input type="text" name="username" placeholder="username" required/>
+                    <input type="password" name="password" placeholder="password" required/>
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button href="{{url_for('signup')}}" type="submit" name="Register" class="btn modal-action modal-close waves-effect waves-green ">Register <i class="material-icons right">edit</i></button>
-                        
+            </div>
+            <div class="modal-footer">
+                <button href="{{url_for('signup')}}" type="submit" name="Register" class="btn modal-action modal-close waves-effect waves-green ">Register <i class="material-icons right">edit</i></button>
 
-                    </div>
-                    </form>
-                </div>
-    
+
+            </div>
+            </form>
+        </div>
+
         {% block content %} {% endblock %}
     </div>
     <footer class="page-footer blue-footer">
@@ -83,9 +102,9 @@
                 </div>
                 <div class="col s12 social">
                     <ul class="social-icon-list">
-                        <li class="social-icon-li"><a href=""><i class="fab fa-instagram social-icon"></i></a></li>
-                        <li class="social-icon-li"><a href=""><i class="fab fa-facebook social-icon"></i></a></li>
-                        <li class="social-icon-li"><a href=""><i class="fab fa-twitter social-icon"></i></a></li>
+                        <li class="social-icon-li"><a href="https://www.instagram.com" target=_blank><i class="fab fa-instagram social-icon"></i></a></li>
+                        <li class="social-icon-li"><a href="https://www.facebook.com" target=_blank><i class="fab fa-facebook social-icon"></i></a></li>
+                        <li class="social-icon-li"><a href="https://www.twitter.com" target=_blank><i class="fab fa-twitter social-icon"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -93,7 +112,6 @@
         <div class="footer-copyright">
             <div class="container">
                 © 2018 Copyright
-                <a class="grey-text text-lighten-4 right" href="#!">Contact Us</a>
             </div>
         </div>
     </footer>
@@ -105,31 +123,29 @@
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    
-    $('.modal').modal({
-      dismissible: true, // Modal can be dismissed by clicking outside of the modal
-      opacity: .5, // Opacity of modal background
-      inDuration: 300, // Transition in duration
-      outDuration: 200, // Transition out duration
-      startingTop: '4%', // Starting top style attribute
-      endingTop: '10%', // Ending top style attribute
-      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-        
-        console.log(modal, trigger);
-      },
-     
-    }
-  );
-      
+            $(".dropdown-button").dropdown();
 
-           
-            $('.js_recipe_btn').click(function(){
-                if (!$('.category_wrapper li').hasClass('selected'))
-                alert ("Please select a category for your recipe");
-                if (!$('.vege_wrapper li').hasClass('selected'))
-                alert ("Please select an option to indicate if your recipe is suitable for vegetarians");
+            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+
+            $('.modal').modal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
             });
+
+
+
+            $('.js_recipe_btn').click(function() {
+                if (!$('.category_wrapper li').hasClass('selected'))
+                    alert("Please select a category for your recipe");
+                if (!$('.vege_wrapper li').hasClass('selected'))
+                    alert("Please select an option to indicate if your recipe is suitable for vegetarians");
+            });
+            
+            
         });
     </script>
 </body>

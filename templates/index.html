@@ -7,8 +7,7 @@
                 <h4 class="lead-text">The Campervan Cookbook</h4>
                 <hr class="med-blue-hr"> {% if 'username' not in session %}
 
-
-                <!-- Modal Trigger -->
+                <!-- Materialize.css Modal Trigger -->
                 <a class="login-btns waves-effect waves-light btn green modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a>
                 <a class="login-btns waves-effect waves-light btn waves-green modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a>
                 <!-- Login Modal Structure -->
@@ -27,7 +26,7 @@
                 <!-- Sign Up Modal Structure -->
                 <div id="register" class="modal">
                     <div class="modal-content">
-                        <h4>Register</h4>
+                        <h4>Sign Up</h4>
                         <form method=POST action="{{ url_for('signup') }}">
                             <input type="text" name="username" placeholder="username" required/>
                             <input type="password" name="password" placeholder="password" required/>

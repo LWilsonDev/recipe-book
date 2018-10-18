@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- Materialize.css NavBar -->
     <nav class="mynav">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
@@ -59,19 +60,16 @@
         </div>
     </nav>
     <div>
+        <!-- Materialize Modal -->
         <div id="login" class="modal">
             <div class="modal-content">
                 <h4>Log In</h4>
                 <form method=POST action="{{ url_for('login') }}">
                     <input type="text" name="username" placeholder="username" required/>
                     <input type="password" name="password" placeholder="password" required/>
-
-
             </div>
             <div class="modal-footer">
-
                 <button href="{{url_for('login')}}" type="submit" name="Login" class="btn modal-action modal-close waves-effect green">Log In <i class="material-icons left">person</i></button>
-
             </div>
             </form>
         </div>
@@ -81,19 +79,16 @@
                 <form method=POST action="{{ url_for('signup') }}">
                     <input type="text" name="username" placeholder="username" required/>
                     <input type="password" name="password" placeholder="password" required/>
-
-
             </div>
             <div class="modal-footer">
                 <button href="{{url_for('signup')}}" type="submit" name="Register" class="btn modal-action modal-close waves-effect waves-green ">Register <i class="material-icons right">edit</i></button>
-
-
             </div>
             </form>
         </div>
 
         {% block content %} {% endblock %}
     </div>
+    <!-- Materialize.css footer -->
     <footer class="page-footer blue-footer">
         <div class="container text-center">
             <div class="row">
@@ -120,32 +115,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            //Materialize.css Jquery
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
             $(".dropdown-button").dropdown();
-
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-
             $('.modal').modal({
-                dismissible: true, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
-                inDuration: 300, // Transition in duration
-                outDuration: 200, // Transition out duration
-                startingTop: '4%', // Starting top style attribute
-                endingTop: '10%', // Ending top style attribute
+                dismissible: true,
+                opacity: .5,
+                inDuration: 300,
+                outDuration: 200,
+                startingTop: '4%',
+                endingTop: '10%',
             });
+            //Materialize JQuery END
 
-
-
+            // Add recipe category validation
             $('.js_recipe_btn').click(function() {
                 if (!$('.category_wrapper li').hasClass('selected'))
                     alert("Please select a category for your recipe");
                 if (!$('.vege_wrapper li').hasClass('selected'))
                     alert("Please select an option to indicate if your recipe is suitable for vegetarians");
             });
-            
-            
+
         });
     </script>
 </body>

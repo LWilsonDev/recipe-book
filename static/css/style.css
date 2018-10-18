@@ -2,7 +2,7 @@
 
 body{
     color:  #195567;
-    background-color: #53a4b09e;
+    background-color: #41a6996b;
    
 }
 .full-width {
@@ -63,11 +63,12 @@ body{
                 0px -5px 35px rgba(255,255,255,0.3), 
                 2px 2px 2px rgba(80,7,164,0), 
                 2px 2px 2px rgba(80,7,164,0);
-    font-size: 4rem;            
+    font-size: 4rem; 
+    color: #f19a00;
 }
 
 .banner {
-    background-color: #f5913cf7;
+    background-color: #0f4f56;
     height: 80vh;
 }
 
@@ -90,13 +91,14 @@ body{
 .lead-text {
     font-size: 1.2em;
     padding: 10px;
+    color: #f19a00;
     
 }
 
 .med-blue-hr{
     width: 60px;
     height: 8px;
-    background-color: #195567;
+    background-color: #b0e4dd;
     border: none;
     margin-top: 20px;
     margin-bottom: 30px;
@@ -140,7 +142,7 @@ body{
 }
 
 .mynav {
-    background-color: #4ca6af;
+    background-color: #36a69a;
     
     color: #195567;
   
@@ -152,7 +154,7 @@ body{
 }
 
 .blue-footer {
-    background-color: #f5913cf7;
+    background-color: #f19a00;
     position: relative;
     bottom: 0;
     left: 0;
@@ -175,7 +177,7 @@ body{
     transition-property: text-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-    color:  #195567;
+    color:  #0f4f56;
     font-size: 32px;
     margin-left: 10px;
     margin-right: 10px;
@@ -189,6 +191,7 @@ body{
 .social {
     text-align: center;
 }
+
 
 
 .brand-logo {

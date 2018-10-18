@@ -190,9 +190,6 @@ body{
     text-align: center;
 }
 
-.btn {
-    background-color: #58b9c3f7;
-}
 
 .brand-logo {
     visibility: hidden;
@@ -242,8 +239,8 @@ body{
     }
     
     .recipe-container{
-        margin-left: 100px;
-        margin-right: 100px;
+        margin-left: 15%;
+        margin-right: 15%;
     }
     .recipe-page-title {
         font-size: 2em;

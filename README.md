@@ -4,6 +4,10 @@ This is an online campervan cookbook, providing a place for campervan enthusiast
 
 This web app is built using Python, Flask, and utilises MongoDB. Users can view all recipes by category (and by author), and they can register and login to add their own recipes. 
 
+**View the app [here](http://vanlife-recipes.herokuapp.com/)**
+
+**View files [here](https://github.com/LWilsonDev/recipe-book)**
+
 # UX
 
 I aimed to keep the layout simple and uncluttered, with a minimum-fuss approach to the login/register to improve UX. 

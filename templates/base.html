@@ -39,7 +39,7 @@
                 <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
                 {% endif %}
             </ul>
-            <ul class="side-nav" id="mobile-demo">
+            <ul class="my-side side-nav" id="mobile-demo">
                 <li><a href="{{url_for('index')}}" class="">Home <i class="material-icons right">home</i></a></li>
                 {% if 'username' in session %}
                 <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
@@ -49,7 +49,7 @@
                 <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>
                 <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
                 {% endif %}
-                <h5 class="side-nav-cat">Recipes</h5>
+                <hr class="sm-hr">
                 <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
                 <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
                 <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>

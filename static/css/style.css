@@ -104,6 +104,15 @@ body{
     margin-bottom: 30px;
 }
 
+.sm-hr {
+    background-color: #b0e4dd;
+    height: 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    width: 40%;
+}
+
 .login-btns {
     margin: 10px auto;
     display: block;
@@ -143,15 +152,26 @@ body{
 
 .mynav {
     background-color: #36a69a;
-    
     color: #195567;
-  
 }
 
 .side-nav {
     background-color: #58b9c3;
     color: #195567;
 }
+
+.my-side li>a {
+    color: #195567;
+}
+
+.side-nav-cat {
+    font-size: 1.35em;
+    margin-left: 30px;
+    margin-top: 20px;
+    color: white;
+    margin-top: 10px;
+}
+
 
 .blue-footer {
     background-color: #f19a00;
@@ -177,7 +197,7 @@ body{
     transition-property: text-shadow;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-    color:  #0f4f56;
+    color:  #195567;
     font-size: 32px;
     margin-left: 10px;
     margin-right: 10px;
@@ -203,11 +223,6 @@ body{
     display: inline;
 }
 
-.side-nav-cat {
-    font-size: 1.3em;
-    margin-left: 30px;
-    margin-top: 20px;
-}
 
 @media (min-width: 768px) {
      .brand-logo {

@@ -1,9 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 <div class="margin-auto">
+    <header>
     <div class="text-center">
         <h1 class="page-title">Edit Recipe</h1>
         <h2>{{ recipe.title }}</h2>
     </div>
+    </header>
+    <main>
     <div class='container card-panel margin-auto'>
         <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
             <div class="row">
@@ -19,7 +22,6 @@
                       <option value="{{ category }}" >{{ category }}</option>
                       {% endif %}
                     {% endfor %}  
-                      
                 </select>
                 </div>
                 <div class="input-field col s12">
@@ -36,7 +38,6 @@
                 </select>
                 </div>
             </div>
-
     </div>
     <div class='container card-panel margin-auto'>
         <div class="row">
@@ -78,5 +79,6 @@
         </div>
     </div>
     </form>
+    </main>
 </div>
 {% endblock %}

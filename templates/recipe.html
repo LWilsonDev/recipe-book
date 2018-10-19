@@ -24,9 +24,9 @@
     <div class="col s12 m6">
         <div class="card-panel recipe-panel">
             <h5>Method</h5>
-            <ul>
-                {% for step in recipe.method %}
-                <li>{{ recipe.method }} </li>
+               <ul>
+                {% for i in recipe.method %}
+                <li>{{ i }}</li>
                 {% endfor %}
             </ul>
         </div>

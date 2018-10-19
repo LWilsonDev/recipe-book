@@ -80,8 +80,8 @@ def addrecipe():
                             "author": session['username'],
                             "description": request.form['description'],
                             "ingredients": ingredient,
-                            "vegetarian": request.form['vegetarian'],
-                            "method": method
+                            "method": method,
+                            "vegetarian": request.form['vegetarian']
                             })
             
            
@@ -136,8 +136,9 @@ def update_recipe(recipe_id):
                     "author": session['username'],
                     "description": request.form['description'],
                     "ingredients": ingredient,
-                    "vegetarian": request.form['vegetarian'],
-                    "method": method
+                    "method": method,
+                    "vegetarian": request.form['vegetarian']
+                    
                     })
     return redirect(url_for('recipe', recipe_id=recipe_id))
     
@@ -152,4 +153,4 @@ def delete_recipe(recipe_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=False)    
+        debug=True)    

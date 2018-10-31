@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Chicle');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body{
     color:  #195567;
     background-color: #41a6996b;
-   
 }
+
 .full-width {
       width: 100%;
 }
+
 .min-height {
     min-height: 55vh;
 }
@@ -18,6 +19,7 @@ body{
     justify-content: center;
     align-content: center;
 }
+
 .flex-container-vert{
     display: flex;
     flex-direction: row;
@@ -58,12 +60,12 @@ body{
 }
 
 .title {
-    font-family: "chicle", cursive;
+    font-family: 'Montserrat', sans-serif;
     text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 
                 0px -5px 35px rgba(255,255,255,0.3), 
                 2px 2px 2px rgba(80,7,164,0), 
                 2px 2px 2px rgba(80,7,164,0);
-    font-size: 4rem; 
+    font-size: 3.5rem; 
     color: #f19a00;
 }
 
@@ -73,15 +75,13 @@ body{
 }
 
 .van-pic {
-  width: 100%;
+    width: 100%;
     height: 80vh;
-  background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  
+    background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-
 
 .intro-text {
     padding: 3% 5%;
@@ -125,8 +125,6 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
-
-
 
 .page-title {
     margin-top: 40px;
@@ -172,7 +170,6 @@ body{
     margin-top: 10px;
 }
 
-
 .blue-footer {
     background-color: #f19a00;
     position: relative;
@@ -187,12 +184,11 @@ body{
     line-height: 1.8;
 }
 
-
 .social-icon-li {
     display: inline-block;
     margin-bottom: 40px;
-    
 }
+
 .social-icon {
     transition-property: text-shadow;
     transition-duration: 0.3s;
@@ -212,12 +208,9 @@ body{
     text-align: center;
 }
 
-
-
 .brand-logo {
     visibility: hidden;
 }
-
 
 .social-icon-list {
     display: inline;
@@ -227,31 +220,37 @@ body{
 @media (min-width: 768px) {
      .brand-logo {
         visibility: visible;
-        font-family: "chicle", cursive;
+        font-family: 'Montserrat', sans-serif;
         text-shadow: 2px 8px 6px rgba(0,0,0,0.2), 
                     0px -5px 35px rgba(255,255,255,0.3), 
                     2px 2px 2px rgba(80,7,164,0), 
                     2px 2px 2px rgba(80,7,164,0);
-        font-size: 1.8rem; 
+        font-size: 1rem; 
         margin-left: 20px;
         margin-right: 20px;
     }
+    
     .title {
         font-size: 5rem;
     }
+    
     .lead-text {
     font-size: 1.5em;
     }
+    
     .login-btns {
     margin: 20px auto;
     width: 200px;
     }
+    
     .intro-text {
         margin: 10px;
     }
+    
     .cat-panel {
     max-width: 50vw;
     }
+    
     .page-title {
         font-size: 2.5em;
     }
@@ -260,6 +259,7 @@ body{
         margin-left: 15%;
         margin-right: 15%;
     }
+    
     .recipe-page-title {
         font-size: 2em;
     }

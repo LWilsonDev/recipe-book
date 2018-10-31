@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, session, redirect, flash
 from flask_pymongo import PyMongo
+
 from bson.objectid import ObjectId
 import bcrypt
 import os
@@ -15,7 +16,6 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-
     return render_template('index.html', 
         breakfast_recipes=mongo.db.recipes.find({"category": "Breakfast"}),
         lunch_recipes=mongo.db.recipes.find({"category": "Lunch"}),
@@ -24,8 +24,8 @@ def index():
         vegetarian_recipes=mongo.db.recipes.find({"vegetarian": "Vegetarian"}),
         vegan_recipes=mongo.db.recipes.find({"vegetarian": "Vegan"}))
 
+
 # Login and Signup inc password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
-# https://www.youtube.com/watch?v=vVx1737auSE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     
@@ -37,15 +37,16 @@ def login():
                 session['username'] = request.form['username']
                 flash('Welcome back, ' + session['username'])
                 return redirect(url_for('index'))
-    
-        flash('Invalid username/password')        
+            flash('Invalid username/password')        
     return render_template('index.html')
+    
     
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     flash('Logged out')
     return redirect(url_for('index'))
+    
         
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -60,11 +61,10 @@ def signup():
             flash("Welcome, " + session['username'])
             return redirect(url_for('index'))
             
-    flash('That username already exists!')
+        flash('That username already exists!')
     return redirect(url_for('index'))
     
         
-    
 @app.route('/addrecipe', methods=['POST', 'GET'])
 def addrecipe():
     
@@ -84,7 +84,6 @@ def addrecipe():
                             "vegetarian": request.form['vegetarian']
                             })
             
-           
             return redirect(url_for("myrecipes", username=session['username']))
         
         return render_template("addrecipe.html")
@@ -95,13 +94,12 @@ def addrecipe():
 @app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
 def recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-   
     return render_template('recipe.html', recipe=the_recipe)
+
 
 @app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
 def myrecipes(username):
     user_recipes = mongo.db.recipes.find({"author": username})    
-
     return render_template('myrecipes.html', user_recipes=user_recipes,
                            username=username)
 
@@ -122,8 +120,8 @@ def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = ["Breakfast", "Lunch", "Dinner", "Dessert"]
     vege_list = ["Not vegetarian", "Vegetarian", "Vegan"]
-    
     return render_template("edit_recipe.html", recipe=the_recipe, categories=categories, vege_list=vege_list)
+
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -138,19 +136,17 @@ def update_recipe(recipe_id):
                     "ingredients": ingredient,
                     "method": method,
                     "vegetarian": request.form['vegetarian']
-                    
                     })
     return redirect(url_for('recipe', recipe_id=recipe_id))
+ 
     
 @app.route('/delete_recipe/<recipe_id>', methods=["GET"])
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('myrecipes', username=session['username']))   
     
-
- 
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=True)    
+        debug=False)    

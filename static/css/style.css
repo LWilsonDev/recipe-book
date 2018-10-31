@@ -92,7 +92,6 @@ body {
   font-size: 1.2em;
   padding: 10px;
   color: #f19a00;
-
 }
 
 .med-blue-hr {
@@ -114,8 +113,9 @@ body {
 }
 
 .login-btns {
-  margin: 10px auto;
+  margin: 20px auto;
   display: block;
+  width: 200px;
 }
 
 .text-center {
@@ -238,11 +238,6 @@ body {
 
   .lead-text {
     font-size: 1.5em;
-  }
-
-  .login-btns {
-    margin: 20px auto;
-    width: 200px;
   }
 
   .intro-text {

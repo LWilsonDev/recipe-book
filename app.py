@@ -5,13 +5,12 @@ from bson.objectid import ObjectId
 import bcrypt
 import os
 
-from app_ignore import *
 
 app = Flask(__name__)
-app.secret_key = secretkey
+app.secret_key = os.environ['SECRET_KEY']
 
-app.config['MONGO_DBNAME'] = db_name
-app.config['MONGO_URI'] = db_uri
+app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
+app.config['MONGO_URI'] = os.environ['MONGO_URI']
 
 mongo = PyMongo(app)
 

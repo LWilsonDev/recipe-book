@@ -5,11 +5,13 @@ from bson.objectid import ObjectId
 import bcrypt
 import os
 
-app = Flask(__name__)
-app.secret_key = "mysecretkey"
+from app_ignore import *
 
-app.config['MONGO_DBNAME'] = "recipe-book"
-app.config['MONGO_URI'] = "mongodb://lwilsondev:lulue100@ds213053.mlab.com:13053/recipe-book"
+app = Flask(__name__)
+app.secret_key = secretkey
+
+app.config['MONGO_DBNAME'] = db_name
+app.config['MONGO_URI'] = db_uri
 
 mongo = PyMongo(app)
 

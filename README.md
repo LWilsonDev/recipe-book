@@ -1,6 +1,6 @@
 # Vanlife Recipes
 
-Vanlife: living full-time in a (often self-built) campervan.
+### Vanlife: living full-time in a (often self-built) campervan.
 
 This is an online campervan cookbook, providing a place for campervan enthusiasts and vanlifers to find and store recipes suitable for life on the road with small/limited cooking facilities.
 

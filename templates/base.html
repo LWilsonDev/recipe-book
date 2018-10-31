@@ -2,144 +2,143 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
-    <title>Recipe book</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+  <title>Recipe book</title>
 </head>
 
 <body>
-    <!-- Materialize.css NavBar -->
-    <nav class="mynav">
-        <!-- Dropdown Structure -->
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
-            <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
-            <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
-            <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
-            <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
-            <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
-        </ul>
-        <div class="nav-wrapper">
-            <a href="{{url_for('index')}}" class="brand-logo">Vanlife</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <!-- Dropdown Trigger -->
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Recipes<i class="material-icons right">arrow_drop_down</i></a></li>
-                {% if 'username' in session %}
-                <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
-                <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
-                <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
-                {% else %}
-                <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>
-                <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
-                {% endif %}
-            </ul>
-            <ul class="my-side side-nav" id="mobile-demo">
-                <li><a href="{{url_for('index')}}" class="">Home <i class="material-icons right">home</i></a></li>
-                {% if 'username' in session %}
-                <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
-                <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
-                <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
-                {% else %}
-                <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>
-                <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
-                {% endif %}
-                <hr class="sm-hr">
-                <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
-                <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
-                <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
-                <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
-                <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
-                <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div>
-        <!-- Materialize Modal -->
-        <div id="login" class="modal">
-            <div class="modal-content">
-                <h4>Log In</h4>
-                <form method=POST action="{{ url_for('login') }}">
-                    <input type="text" name="username" placeholder="username" required/>
-                    <input type="password" name="password" placeholder="password" required/>
-            </div>
-            <div class="modal-footer">
-                <button href="{{url_for('login')}}" type="submit" name="Login" class="btn modal-action modal-close waves-effect green">Log In <i class="material-icons left">person</i></button>
-            </div>
-            </form>
-        </div>
-        <div id="register" class="modal">
-            <div class="modal-content">
-                <h4>Register</h4>
-                <form method=POST action="{{ url_for('signup') }}">
-                    <input type="text" name="username" placeholder="username" required/>
-                    <input type="password" name="password" placeholder="password" required/>
-            </div>
-            <div class="modal-footer">
-                <button href="{{url_for('signup')}}" type="submit" name="Register" class="btn modal-action modal-close waves-effect waves-green ">Register <i class="material-icons right">edit</i></button>
-            </div>
-            </form>
-        </div>
-
-        {% block content %} {% endblock %}
+  <!-- Materialize.css NavBar -->
+  <nav class="mynav">
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
+      <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
+      <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
+      <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
+      <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
+      <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
+    </ul>
+    <div class="nav-wrapper">
+      <a href="{{url_for('index')}}" class="brand-logo">Vanlife</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Recipes<i class="material-icons right">arrow_drop_down</i></a></li>
+        {% if 'username' in session %}
+        <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
+        <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
+        <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
+        {% else %}
+        <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>
+        <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
+        {% endif %}
+      </ul>
+      <ul class="my-side side-nav" id="mobile-demo">
+        <li><a href="{{url_for('index')}}" class="">Home <i class="material-icons right">home</i></a></li>
+        {% if 'username' in session %}
+        <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
+        <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
+        <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
+        {% else %}
+        <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>
+        <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
+        {% endif %}
+        <hr class="sm-hr">
+        <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
+        <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
+        <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
+        <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
+        <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
+        <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
+      </ul>
     </div>
-    <!-- Materialize.css footer -->
-    <footer class="page-footer blue-footer">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col s12">
-                    <p class="social-text">Join us on social media to share your vanlife recipe photos and adventures!</p>
-                </div>
-                <div class="col s12 social">
-                    <ul class="social-icon-list">
-                        <li class="social-icon-li"><a href="https://www.instagram.com" target=_blank><i class="fab fa-instagram social-icon"></i></a></li>
-                        <li class="social-icon-li"><a href="https://www.facebook.com" target=_blank><i class="fab fa-facebook social-icon"></i></a></li>
-                        <li class="social-icon-li"><a href="https://www.twitter.com" target=_blank><i class="fab fa-twitter social-icon"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+  </nav>
+  <div>
+    <!-- Materialize Modal -->
+    <div id="login" class="modal">
+      <div class="modal-content">
+        <h4>Log In</h4>
+        <form method=POST action="{{ url_for('login') }}">
+          <input type="text" name="username" placeholder="username" required/>
+          <input type="password" name="password" placeholder="password" required/>
+      </div>
+      <div class="modal-footer">
+        <button href="{{url_for('login')}}" type="submit" name="Login" class="btn modal-action modal-close waves-effect green">Log In <i class="material-icons left">person</i></button>
+      </div>
+      </form>
+    </div>
+    <div id="register" class="modal">
+      <div class="modal-content">
+        <h4>Register</h4>
+        <form method=POST action="{{ url_for('signup') }}">
+          <input type="text" name="username" placeholder="username" required/>
+          <input type="password" name="password" placeholder="password" required/>
+      </div>
+      <div class="modal-footer">
+        <button href="{{url_for('signup')}}" type="submit" name="Register" class="btn modal-action modal-close waves-effect waves-green ">Register <i class="material-icons right">edit</i></button>
+      </div>
+      </form>
+    </div>
+    {% block content %} {% endblock %}
+  </div>
+  <!-- Materialize.css footer -->
+  <footer class="page-footer blue-footer">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col s12">
+          <p class="social-text">Join us on social media to share your vanlife recipe photos and adventures!</p>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2018 Copyright
-            </div>
+        <div class="col s12 social">
+          <ul class="social-icon-list">
+            <li class="social-icon-li"><a href="https://www.instagram.com" target=_blank><i class="fab fa-instagram social-icon"></i></a></li>
+            <li class="social-icon-li"><a href="https://www.facebook.com" target=_blank><i class="fab fa-facebook social-icon"></i></a></li>
+            <li class="social-icon-li"><a href="https://www.twitter.com" target=_blank><i class="fab fa-twitter social-icon"></i></a></li>
+          </ul>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 Copyright
+      </div>
+    </div>
+  </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //Materialize.css Jquery
-            $('.collapsible').collapsible();
-            $('select').material_select();
-            $(".button-collapse").sideNav();
-            $(".dropdown-button").dropdown();
-            $('.modal').modal({
-                dismissible: true,
-                opacity: .5,
-                inDuration: 300,
-                outDuration: 200,
-                startingTop: '4%',
-                endingTop: '10%',
-            });
-            //Materialize JQuery END
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //Materialize.css Jquery
+      $('.collapsible').collapsible();
+      $('select').material_select();
+      $(".button-collapse").sideNav();
+      $(".dropdown-button").dropdown();
+      $('.modal').modal({
+        dismissible: true,
+        opacity: .5,
+        inDuration: 300,
+        outDuration: 200,
+        startingTop: '4%',
+        endingTop: '10%',
+      });
+      //Materialize JQuery END
 
-            // Add recipe category validation
-            $('.js_recipe_btn').click(function() {
-                if (!$('.category_wrapper li').hasClass('selected'))
-                    alert("Please select a category for your recipe");
-                if (!$('.vege_wrapper li').hasClass('selected'))
-                    alert("Please select an option to indicate if your recipe is suitable for vegetarians");
-            });
+      // Add recipe category validation
+      $('.js_recipe_btn').click(function() {
+        if (!$('.category_wrapper li').hasClass('selected'))
+          alert("Please select a category for your recipe");
+        if (!$('.vege_wrapper li').hasClass('selected'))
+          alert("Please select an option to indicate if your recipe is suitable for vegetarians");
+      });
 
-        });
-    </script>
+    });
+  </script>
 </body>
 
 </html>

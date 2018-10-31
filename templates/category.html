@@ -1,21 +1,21 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container text-center">
-    <header>
-        <h3 class="page-title">{{ category_name }} Recipes</h3>
-    </header>
-    <main>
-        <div class="row text-center min-height">
-            <div class="col s12">
-                <div class="cat-panel card-panel">
-                    <ul>
-                        {% for recipe in category%}
-                        <li><a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+  <header>
+    <h3 class="page-title">{{ category_name }} Recipes</h3>
+  </header>
+  <main>
+    <div class="row text-center min-height">
+      <div class="col s12">
+        <div class="cat-panel card-panel">
+          <ul>
+            {% for recipe in category%}
+            <li><a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.title }}</a></li>
+            {% endfor %}
+          </ul>
         </div>
-    </main>
+      </div>
+    </div>
+  </main>
 </div>
 
 {% endblock %}

@@ -1,19 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 <div class="margin-auto">
-    <header>
+  <header>
     <div class="text-center">
-        <h1 class="page-title">Edit Recipe</h1>
-        <h2>{{ recipe.title }}</h2>
+      <h1 class="page-title">Edit Recipe</h1>
+      <h2>{{ recipe.title }}</h2>
     </div>
-    </header>
-    <main>
+  </header>
+  <main>
     <div class='container card-panel margin-auto'>
-        <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
-            <div class="row">
-                <h4 class='form-header'>Recipe Category</h4>
-                <div class="input-field col s12">
-
-                    <select class="category_wrapper" id="category" name="category">
+      <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
+        <div class="row">
+          <h4 class='form-header'>Recipe Category</h4>
+          <div class="input-field col s12">
+            <select class="category_wrapper" id="category" name="category">
                   <option value="" disabled selected>Choose Category</option>
                   {% for category in categories %}
                   {% if category == recipe.category %}
@@ -23,10 +22,9 @@
                       {% endif %}
                     {% endfor %}  
                 </select>
-                </div>
-                <div class="input-field col s12">
-
-                    <select class="vege_wrapper" id="vegetarian" name="vegetarian">
+          </div>
+          <div class="input-field col s12">
+            <select class="vege_wrapper" id="vegetarian" name="vegetarian">
                   <option value="" disabled selected>Vegetarian/vegan?</option>
                       {% for v in vege_list %}
                   {% if v == recipe.vegetarian %}
@@ -36,49 +34,48 @@
                       {% endif %}
                     {% endfor %} 
                 </select>
-                </div>
-            </div>
-    </div>
-    <div class='container card-panel margin-auto'>
-        <div class="row">
-            <h4 class='form-header'>Recipe Title</h4>
-            <div class="input-field col s12">
-
-                <input value="{{ recipe.title }}" name="title" type="text">
-                <label>Recipe Title</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <textarea name="description" class="materialize-textarea">{{ recipe.description }}</textarea>
-                <label>Timings/Servings etc.</label>
-            </div>
+          </div>
         </div>
     </div>
     <div class='container card-panel margin-auto'>
-        <div class="row">
-            <div class="ingredient-wrapper">
-                <h4>Ingredients</h4>
-                <div class="input-field col s12">
-                    <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g flour">{% for ing in recipe.ingredients %}{{ ing }}
+      <div class="row">
+        <h4 class='form-header'>Recipe Title</h4>
+        <div class="input-field col s12">
+          <input value="{{ recipe.title }}" name="title" type="text">
+          <label>Recipe Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea name="description" class="materialize-textarea">{{ recipe.description }}</textarea>
+          <label>Timings/Servings etc.</label>
+        </div>
+      </div>
+    </div>
+    <div class='container card-panel margin-auto'>
+      <div class="row">
+        <div class="ingredient-wrapper">
+          <h4>Ingredients</h4>
+          <div class="input-field col s12">
+            <textarea name="ingredients" class="materialize-textarea" placeholder="eg. 100g flour">{% for ing in recipe.ingredients %}{{ ing }}
 {% endfor %}</textarea>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
     <div class='container card-panel margin-auto'>
-        <div class="row">
-            <h4 class='form-header'>Method</h4>
-            <div class="input-field col s12">
-                <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans">{% for step in recipe.method %}{{ step }}
+      <div class="row">
+        <h4 class='form-header'>Method</h4>
+        <div class="input-field col s12">
+          <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans">{% for step in recipe.method %}{{ step }}
 {% endfor %}</textarea>
-            </div>
-            <button href="{{ url_for('update_recipe', recipe_id=recipe._id) }}" name="edit_recipe" class="signup-btn btn waves-effect waves-light" type="submit">Confirm changes
+        </div>
+        <button href="{{ url_for('update_recipe', recipe_id=recipe._id) }}" name="edit_recipe" class="signup-btn btn waves-effect waves-light" type="submit">Confirm changes
             <i class="material-icons right">playlist_add</i>
         </button>
-        </div>
+      </div>
     </div>
     </form>
-    </main>
+  </main>
 </div>
 {% endblock %}

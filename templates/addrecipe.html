@@ -1,69 +1,68 @@
 {% extends 'base.html' %} {% block content %}
 <header>
-    <div class="text-center">
-        <h1 class="page-title">Add Recipe</h1>
-    </div>
+  <div class="text-center">
+    <h1 class="page-title">Add Recipe</h1>
+  </div>
 </header>
 <main>
-    <div class='container card-panel margin-auto'>
-        <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
-            <div class="row">
-                <h4 class='form-header'>Recipe Category</h4>
-                <div class="input-field col s12">
-
-                    <select class="category_wrapper" required id="category" name="category">
-                    <option value="" disabled selected>Choose Category</option>
-                    <option class="drop_select" value="Breakfast">Breakfast</option>
-                    <option class="drop_select" value="Lunch">Lunch/Salad</option>
-                    <option class="drop_select" value="Dinner">Dinner</option>
-                    <option class="drop_select" value="Dessert">Dessert</option>
-                </select>
-                </div>
-                <div class="input-field col s12">
-                    <select class="vege_wrapper" required id="vegetarian" name="vegetarian">
-                    <option value="" disabled selected>Vegetarian/vegan?</option>
-                    <option class="drop_select" value="not-veg">Not vegetarian</option>
-                    <option class="drop_select" value="Vegetarian">Vegetarian</option>
-                    <option class="drop_select" value="Vegan">Vegan</option>
-                </select>
-                </div>
-            </div>
-    </div>
-    <div class='container card-panel margin-auto'>
-        <div class="row">
-            <h4 class='form-header'>Recipe Title</h4>
-            <div class="input-field col s12">
-                <input name="title" type="text" data-length="40" pattern="^([a-zA-Z_\s\-]*)$" title="Letters only please" required>
-                <label>Recipe Title</label>
-            </div>
+  <div class='container card-panel margin-auto'>
+    <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
+      <div class="row">
+        <h4 class='form-header'>Recipe Category</h4>
+        <div class="input-field col s12">
+          <select class="category_wrapper" required id="category" name="category">
+            <option value="" disabled selected>Choose Category</option>
+            <option class="drop_select" value="Breakfast">Breakfast</option>
+            <option class="drop_select" value="Lunch">Lunch/Salad</option>
+            <option class="drop_select" value="Dinner">Dinner</option>
+            <option class="drop_select" value="Dessert">Dessert</option>
+          </select>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <textarea name="description" class="materialize-textarea" placeholder="e.g. 10 mins cooking time, serves 4"></textarea>
-                <label>Timings/Servings etc.</label>
-            </div>
+        <div class="input-field col s12">
+          <select class="vege_wrapper" required id="vegetarian" name="vegetarian">
+            <option value="" disabled selected>Vegetarian/vegan?</option>
+            <option class="drop_select" value="not-veg">Not vegetarian</option>
+            <option class="drop_select" value="Vegetarian">Vegetarian</option>
+            <option class="drop_select" value="Vegan">Vegan</option>
+          </select>
         </div>
+      </div>
+  </div>
+  <div class='container card-panel margin-auto'>
+    <div class="row">
+      <h4 class='form-header'>Recipe Title</h4>
+      <div class="input-field col s12">
+        <input name="title" type="text" data-length="40" pattern="^([a-zA-Z_\s\-]*)$" title="Letters only please" required>
+        <label>Recipe Title</label>
+      </div>
     </div>
-    <div class='container card-panel margin-auto'>
-        <div class="row">
-            <h4 class='form-header'>Ingredients</h4>
-            <p>Start a new line for each ingredient</p>
-            <div class="input-field col s12">
-                <textarea name="ingredients" class="materialize-textarea" placeholder="e.g. 100g Flour"></textarea>
-            </div>
-        </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea name="description" class="materialize-textarea" placeholder="e.g. 10 mins cooking time, serves 4"></textarea>
+        <label>Timings/Servings etc.</label>
+      </div>
     </div>
-    <div class='container card-panel margin-auto'>
-        <div class="row">
-            <h4 class='form-header'>Method</h4>
-            <div class="input-field col s12">
-                <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
-            </div>
-            <button class="js_recipe_btn btn waves-effect waves-light right" type="submit">Add Recipe
-                <i class="material-icons right">playlist_add</i>
-             </button>
-        </div>
+  </div>
+  <div class='container card-panel margin-auto'>
+    <div class="row">
+      <h4 class='form-header'>Ingredients</h4>
+      <p>Start a new line for each ingredient</p>
+      <div class="input-field col s12">
+        <textarea name="ingredients" class="materialize-textarea" placeholder="e.g. 100g Flour"></textarea>
+      </div>
     </div>
-    </form>
+  </div>
+  <div class='container card-panel margin-auto'>
+    <div class="row">
+      <h4 class='form-header'>Method</h4>
+      <div class="input-field col s12">
+        <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
+      </div>
+      <button class="js_recipe_btn btn waves-effect waves-light right" type="submit">Add Recipe
+          <i class="material-icons right">playlist_add</i>
+      </button>
+    </div>
+  </div>
+  </form>
 </main>
 {% endblock %}

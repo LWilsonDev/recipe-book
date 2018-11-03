@@ -7,7 +7,7 @@
 	"_id": {
         "$oid": Mongo ObjectID
     },
-    "username": String,
+    "username": String (same as "author" in recipes),
     "password": String (Hashed password)}
 
 #### Recipes

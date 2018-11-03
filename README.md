@@ -120,14 +120,19 @@ The project is deployed on Heroku. I followed these steps:
 heroku login
 heroku apps create recipe-book
 ```
-Create requirements.txt and a Procfile
+- Create requirements.txt and a Procfile
 ```
 git push -u heroku master
 heroku ps:scale web=1
 ```
-Set Heroku app Config Vars to IP 0.0.0.0 and PORT 5000
+- Set Heroku app settings - Config Vars to IP 0.0.0.0 and PORT 5000
+- I had mistakenly included other config vars to git repo so I needed to change them and make them environment variables before deployment.
+- I changed the app 'secret_key' and database information, and made them environment variables using python's os.environ.
+- I then set these variables in Heroku app settings - Config Vars.
 
-To run the files locally, download the files from the github repo, ensure all requirements are installed:
+### To run the files locally:
+
+- Download the files from the github repo, ensure all requirements are installed:
 ```
 pip install -r requirements.txt
 python3 app.python
@@ -135,6 +140,8 @@ http://localhost:5000
 ```
 
 ## Credits
+
+This app is intended only as an educational project, not for actual real-world deployment.
 
 #### Content:
 

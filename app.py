@@ -7,29 +7,49 @@ import os
 
 
 app = Flask(__name__)
-app.secret_key = os.environ['SECRET_KEY']
 
-app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
-app.config['MONGO_URI'] = os.environ['MONGO_URI']
 
-mongo = PyMongo(app)
+####### Config Vars ######
 
+# set development to False and debug to false for deployment
+development = True
+    
+if development == True:
+    import recipe_config
+    # config variables set in recipe_config file which is gitignore for security
+    app.secret_key = recipe_config.SECRET_KEY
+    app.config['MONGO_DBNAME'] = recipe_config.MONGO_DBNAME
+    app.config['MONGO_URI'] = recipe_config.MONGO_URI
+   
+else:    
+    # environment variables set in Heroku config for deployed site
+    app.secret_key = os.environ['SECRET_KEY']
+    app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
+    app.config['MONGO_URI'] = os.environ['MONGO_URI']
+        
+######### 
+
+
+mongo = PyMongo(app)    
 
 @app.route('/')
 def index():
-    return render_template('index.html', 
-        breakfast_recipes=mongo.db.recipes.find({"category": "Breakfast"}),
-        lunch_recipes=mongo.db.recipes.find({"category": "Lunch"}),
-        dinner_recipes=mongo.db.recipes.find({"category": "Dinner"}),
-        dessert_recipes=mongo.db.recipes.find({"category": "Dessert"}),
-        vegetarian_recipes=mongo.db.recipes.find({"vegetarian": "Vegetarian"}),
-        vegan_recipes=mongo.db.recipes.find({"vegetarian": "Vegan"}))
+    '''
+    Render home page
+    '''
+    return render_template('index.html')
 
 
-# Login and Signup inc password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
+# Login and Signup inc password encryption code adapted from PrettyPrinted tutorial: 
+#https://github.com/PrettyPrinted/mongodb-user-login 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    If request method is POST, function finds username from database and compares encrypted passwords.
+    If they match the user is logged in.
     
+    """
     if request.method == 'POST':
         users = mongo.db.users
         login_user = users.find_one({'username' : request.form['username']})
@@ -51,6 +71,11 @@ def logout():
         
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+    """
+    If username is unique, password is encrypted and user is added to database. 
+    User is then logged in (username in session).
+    """
+    
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({"username": request.form['username']})
@@ -68,7 +93,9 @@ def signup():
         
 @app.route('/addrecipe', methods=['POST', 'GET'])
 def addrecipe():
-    
+    '''
+    A logged-in user can add a new recipe to the db
+    '''
     if 'username' in session:
         if request.method == 'POST':
             
@@ -94,12 +121,18 @@ def addrecipe():
 
 @app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
 def recipe(recipe_id):
+    '''
+    Detail page for each recipe
+    '''
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template('recipe.html', recipe=the_recipe)
 
 
 @app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
 def myrecipes(username):
+    '''
+    Shows all recipes of the user, or all recipes from one specific author
+    '''
     user_recipes = mongo.db.recipes.find({"author": username})    
     return render_template('myrecipes.html', user_recipes=user_recipes,
                            username=username)
@@ -107,6 +140,9 @@ def myrecipes(username):
 
 @app.route('/category/<category_name>', methods=['POST', 'GET'])
 def category(category_name):
+    '''
+    Shows list of all recipes in a category
+    '''
     if category_name == 'Vegetarian':
         the_category = mongo.db.recipes.find({"vegetarian": "Vegetarian"})
     elif category_name == 'Vegan':
@@ -118,6 +154,9 @@ def category(category_name):
 
 @app.route('/edit_recipe/<recipe_id>', methods=['POST', 'GET'])
 def edit_recipe(recipe_id):
+    '''
+    Page for editing a recipe
+    '''
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = ["Breakfast", "Lunch", "Dinner", "Dessert"]
     vege_list = ["Not vegetarian", "Vegetarian", "Vegan"]
@@ -126,6 +165,9 @@ def edit_recipe(recipe_id):
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
+    '''
+    Updates the editted recipe on the db
+    '''
     recipes = mongo.db.recipes
     ingredient = request.form['ingredients'].splitlines()
     method = request.form['method'].splitlines()
@@ -143,6 +185,9 @@ def update_recipe(recipe_id):
     
 @app.route('/delete_recipe/<recipe_id>', methods=["GET"])
 def delete_recipe(recipe_id):
+    '''
+    deletes recipe from the db
+    '''
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('myrecipes', username=session['username']))   
     
@@ -150,4 +195,4 @@ def delete_recipe(recipe_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=False)    
+        debug=True)    

@@ -12,7 +12,7 @@ app = Flask(__name__)
 ####### Config Vars ######
 
 # set development to False and debug to false for deployment
-development = True
+development = False
     
 if development == True:
     import recipe_config
@@ -195,4 +195,4 @@ def delete_recipe(recipe_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=True)    
+        debug=False)    

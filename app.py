@@ -12,7 +12,7 @@ app = Flask(__name__)
 ####### Config Vars ######
 
 # set development to False and debug to false for deployment
-development = False
+development = True
     
 if development == True:
     import recipe_config
@@ -58,7 +58,7 @@ def login():
                 session['username'] = request.form['username']
                 flash('Welcome back, ' + session['username'])
                 return redirect(url_for('index'))
-            flash('Invalid username/password')        
+        flash('Invalid username/password')        
     return render_template('index.html')
     
     
@@ -195,4 +195,4 @@ def delete_recipe(recipe_id):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=False)    
+        debug=True)    

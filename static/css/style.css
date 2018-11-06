@@ -2,7 +2,7 @@
 
 body {
   color: #195567;
-  background-color: #41a6996b;
+  background-color: #aed9d4;
 }
 
 .full-width {
@@ -173,7 +173,7 @@ body {
 }
 
 .blue-footer {
-  background-color: #f19a00;
+  background-color: #36a69a;
   position: relative;
   bottom: 0;
   left: 0;
@@ -195,7 +195,7 @@ body {
   transition-property: text-shadow;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
-  color: #195567;
+  color: #aed9d4;
   font-size: 32px;
   margin-left: 10px;
   margin-right: 10px;

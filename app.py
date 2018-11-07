@@ -1,9 +1,9 @@
 from flask import Flask, render_template, url_for, request, session, redirect, flash
 from flask_pymongo import PyMongo
-
 from bson.objectid import ObjectId
 import bcrypt
 import os
+import config
 
 
 app = Flask(__name__)
@@ -11,21 +11,18 @@ app = Flask(__name__)
 
 ####### Config Vars ######
 
-# set development to False and debug to false for deployment
+# set development and testing to False for deployment
 development = True
-    
+
 if development == True:
-    import recipe_config
-    # config variables set in recipe_config file which is gitignore for security
-    app.secret_key = recipe_config.SECRET_KEY
-    app.config['MONGO_DBNAME'] = recipe_config.MONGO_DBNAME
-    app.config['MONGO_URI'] = recipe_config.MONGO_URI
-   
-else:    
-    # environment variables set in Heroku config for deployed site
+    app.config.from_object('config.DevelopmentConfig')
+
+else: 
+    # environment variables set in Heroku config for deployed sit
     app.secret_key = os.environ['SECRET_KEY']
     app.config['MONGO_DBNAME'] = os.environ['MONGO_DBNAME']
     app.config['MONGO_URI'] = os.environ['MONGO_URI']
+    DEBUG=False
         
 ######### 
 
@@ -100,7 +97,6 @@ def addrecipe():
         if request.method == 'POST':
             
             ingredient = request.form['ingredients'].splitlines()
-            method = request.form['method'].splitlines()
             recipes = mongo.db.recipes
             
             recipes.insert({"title": request.form['title'],
@@ -108,15 +104,16 @@ def addrecipe():
                             "author": session['username'],
                             "description": request.form['description'],
                             "ingredients": ingredient,
-                            "method": method,
+                            "method": request.form['method'],
                             "vegetarian": request.form['vegetarian']
                             })
             
             return redirect(url_for("myrecipes", username=session['username']))
         
         return render_template("addrecipe.html")
-    flash("please login to add a recipe")
-    return render_template("login.html") 
+    #If user navigates to /addrecipe but isnt logged in, show error    
+    flash("Please login to add a recipe")
+    return render_template("index.html") 
     
 
 @app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
@@ -194,5 +191,4 @@ def delete_recipe(recipe_id):
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
-        debug=True)    
+        port=int(os.environ.get('PORT')))    

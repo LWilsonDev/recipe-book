@@ -7,7 +7,7 @@
     <div class="row text-center min-height">
       <div class="col s12">
         <div class="cat-panel card-panel">
-          <ul>
+          <ul id="myTable">
             {% for recipe in category%}
             <li><a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.title }}</a></li>
             {% endfor %}
@@ -15,6 +15,12 @@
         </div>
       </div>
     </div>
+    <div>
+      
+<ul class="pagination pager" id="myPager"></ul>
+
+    
+  </div>
   </main>
 </div>
 

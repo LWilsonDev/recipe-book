@@ -31,8 +31,22 @@ class FlaskTestCase(unittest.TestCase):
                     follow_redirects=True)
         self.assertIn('Invalid username/password', response.data)    
         
+    # ensure log out shows correct message   
+    def test_logout(self):
+        tester = app.test_client(self)
+        tester.post('/login',
+                    data=dict(username="test_username", password="test_password"),
+                    follow_redirects=True)
+        response = tester.get('/logout', follow_redirects=True)            
+        self.assertIn('Logged out', response.data) 
+        
+    # ensure /addrecipe page can't be reached unless logged in
+    def test_addrecipe_requires_login(self):
+        tester = app.test_client(self)
+        response = tester.get('/addrecipe', follow_redirects=True)
+        self.assertTrue('Please login to add a recipe' in response.data)
     
-    # ensure login error message with incorrect credentials     
+    
         
 if __name__ == '__main__':
     unittest.main()

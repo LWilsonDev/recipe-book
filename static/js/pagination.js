@@ -22,8 +22,8 @@ $.fn.pageMe = function(opts){
     if (typeof settings.pagerSelector!="undefined") {
         pager = $(settings.pagerSelector);
     }
-
-    var numItems = $('ul#myTable').children('li').length;
+//altered numItems from original plugin to use li length
+    var numItems = $('#myTable').children('a').length;
     var numPages = Math.ceil(numItems/perPage);
     
     $("#total_reg").html(numItems+" Entries In Total");
@@ -35,7 +35,8 @@ $.fn.pageMe = function(opts){
     }
 
     var curr = 0;
-    while(numPages > curr && (settings.hidePageNumbers==false)){
+//altered original plugin to hide pagination if only 1 page of items
+    while(numPages > 1 && numPages > curr && (settings.hidePageNumbers==false)){
         $('<li class="waves-effect"><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
         curr++;
     }

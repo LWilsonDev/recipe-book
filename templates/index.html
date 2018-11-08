@@ -19,7 +19,7 @@
               <input type="password" name="password" placeholder="password" required/>
           </div>
           <div class="modal-footer">
-            <button href="{{url_for('login')}}" type="submit" name="Login" class="btn modal-action modal-close waves-light waves-effect green">Log In <i class="material-icons right">person</i></button>
+            <a href="{{url_for('login')}}" name="Login" class="btn modal-action modal-close waves-light waves-effect green">Log In <i class="material-icons right">person</i></a>
           </div>
           </form>
         </div>
@@ -32,7 +32,7 @@
               <input type="password" name="password" placeholder="password" required/>
           </div>
           <div class="modal-footer">
-            <button href="{{url_for('signup')}}" type="submit" name="Register" class="btn modal-action modal-close waves-light waves-effect waves-green">Sign Up <i class="material-icons right">edit</i></button>
+            <a href="{{url_for('signup')}}" name="Register" class="btn modal-action modal-close waves-light waves-effect waves-green">Sign Up <i class="material-icons right">edit</i></a>
           </div>
           </form>
         </div>
@@ -61,72 +61,20 @@
 <main>
   <div class="container">
     <div class="row">
+      {% for cat in all_categories %}
       <div class="col s12 m6 l4">
-        <a href="{{ url_for('category', category_name='Breakfast')}}">
+        <a href="{{ url_for('category', category_name=cat.capitalize())}}">
           <div class="card">
-            <div class="breakfast-img card-image waves-effect waves-block waves-light">
+            <div class="{{ cat }}-img card-image waves-effect waves-block waves-light">
             </div>
             <div class="card-content">
-              <span class="card-title grey-text text-darken-4">Breakfast <i class="material-icons right">navigate_next</i></span>
+              <span class="card-title grey-text text-darken-4">{{ cat.capitalize() }} <i class="material-icons right">navigate_next</i></span>
             </div>
           </div>
         </a>
       </div>
-      <div class="col s12 m6 l4">
-        <a href="{{ url_for('category', category_name='Lunch')}}">
-          <div class="card">
-            <div class="lunch-img card-image waves-effect waves-block waves-light">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">Lunch <i class="material-icons right">navigate_next</i></span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col s12 m6 l4">
-        <a href="{{ url_for('category', category_name='Dinner')}}">
-          <div class="card">
-            <div class="dinner-img card-image waves-effect waves-block waves-light">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">Dinner <i class="material-icons right">navigate_next</i></span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col s12 m6 l4">
-        <a href="{{ url_for('category', category_name='Dessert')}}">
-          <div class="card">
-            <div class="dessert-img card-image waves-effect waves-block waves-light">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">Dessert <i class="material-icons right">navigate_next</i></span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col s12 m6 l4">
-        <a href="{{ url_for('category', category_name='Vegetarian')}}">
-          <div class="card">
-            <div class="vegetarian-img card-image waves-effect waves-block waves-light">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">Vegetarian <i class="material-icons right">navigate_next</i></span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col s12 m6 l4">
-        <a href="{{ url_for('category', category_name='Vegan')}}">
-          <div class="card">
-            <div class="vegan-img card-image waves-effect waves-block waves-light">
-            </div>
-            <div class="card-content">
-              <span class="card-title grey-text text-darken-4">Vegan <i class="material-icons right">navigate_next</i></span>
-            </div>
-          </div>
-        </a>
-      </div>
+      {% endfor %}
+      
     </div>
   </div>
 </main>

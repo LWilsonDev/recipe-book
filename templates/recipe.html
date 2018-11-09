@@ -1,8 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <header>
     <div class="row sm-banner text-center">
-        <div class="col s12 m7 l6 flex-container height-50vh">
-            <div class="max-width-80 ">
+        <div class="col s12 m7 l6 flex-container page-banner">
             <h1 class="recipe-page-title">{{ recipe.title }}</h1>
             <hr class="med-blue-hr">
             <h2 class="author blue-txt">Recipe by <a href="{{url_for('myrecipes', username=recipe.author)}}">{{ recipe.author }}</a></h2>
@@ -10,7 +9,6 @@
             <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" method="POST" class="waves-effect waves-light btn">Edit</a>
             <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn red">Delete</a> {% endif %}
             <p class="blue-txt">Timings/Servings: {{recipe.description}}</p>
-            </div>
         </div>
         <div class="col s12 m5 l6 sm-pic pic-{{picture_number}}">
             <!-- Intro Picture -->

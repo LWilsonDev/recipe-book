@@ -41,7 +41,7 @@
       <div class="row">
         <h4 class='form-header'>Recipe Title</h4>
         <div class="input-field col s12">
-          <input value="{{ recipe.title }}" name="title" type="text">
+          <input value="{{ recipe.title }}" name="title" type="text" data-length="40" pattern="^[a-zA-Z0-9,.!?& ]*$" title="Letters only please" required>
           <label>Recipe Title</label>
         </div>
       </div>

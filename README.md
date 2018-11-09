@@ -15,7 +15,9 @@ This web app is built using Python, Flask, and utilises MongoDB. Users can view 
 
 I aimed to keep the layout simple and uncluttered, with a minimum-fuss approach to the login/register to improve UX.
 
-The colour-scheme is quite bold, with bright orange heading text and footer. This is to reflect the retro/alternative 'style' associated with vanlife.
+The colour-scheme is fun and bright, with bright orange heading text. This is to reflect the retro/alternative 'style' associated with vanlife.
+
+I used a similar layout across the site's pages to aid UX and keep a consistent style. The images on the 'category' and 'author/my recipes' pages are of different camper vans. There is a collection of 10 different images which are randomly selected each time the page loads. This was to keep the theme of 'vanlife' and add interest to the pages.
 
 #### User stories:
 
@@ -30,7 +32,7 @@ The colour-scheme is quite bold, with bright orange heading text and footer. Thi
 
 #### Homepage:
 
--  If the user is not logged in they will find buttons offering login/register.
+- If the user is not logged in they will find buttons offering login/register.
 - Login/register are simple pop-out modals, meaning the user does not have to navigate to a separate page to login.
 - Once logged in, the user has the option to add a new recipe or view their recipes.
 - The user is shown an error message or a success message after login.
@@ -67,28 +69,31 @@ The colour-scheme is quite bold, with bright orange heading text and footer. Thi
 
 ## Testing
 
-I did not automate tests for this project, however in future I would choose to write automated tests, particularly to test the CRUD aspects of the app/database.
+Unit tests for the login/register/logout functionality can be found [here](https://github.com/LWilsonDev/recipe-book/blob/master/test.py)
+These tests can be ran from the command line using "python3 test.py" 
 
-I underwent thorough manual testing of each element including:
+The automatic tests check the following: 
 
 #### Login:
-- Returning users with correct password should see a "welcome back" message, and see 'logout' and 'myrecipe' navigation links
+- Returning users with correct password should see a "welcome back" message
 - Unregistered or returning users with incorrect password should see "invalid login/password"
 
 #### Register:
 - Users with an existing username should see "that username already exists"
-- New users entering a unique username and password should be logged in and see "logged in" message as well as 'logout' and 'myrecipe' navigation links
+- New users entering a unique username and password should be logged in and see "logged in" message
 
 #### Logout:
-- Users should be redirected to index page and see "logged out" message. Users will not be able to add recipes once logged out.
+- Users should be redirected to index page and see "logged out" message.
 
-#### Add recipe:
-- Once logged in, users can add a recipe to the database. The recipe should have a title of no more than 40 letters, and must not include special characters. I used the following pattern:
- ```
- pattern="^([a-zA-Z_\s\-]*)$"
- ```
-- If the user does not select a category or vegetarian/not, or if they do not give the recipe a title they will see an error message. The title error message is the browser "required field" error, the vege/catagory selection error is powered by javascript and should read either:
-- 'Please select a category for your recipe' or "Please select an option to indicate if your recipe is suitable for vegetarians" depending on which selection is missing.
+
+I underwent thorough manual testing of each element including:
+
+- Once logged in, users can add a recipe to the database. The recipe should have a title of no more than 40 letters, and must not include special characters other than '&' and punctuation.
+- If the user does not select a category or vegetarian/not, or if they do not give the recipe a title they will see an error message. The title error message is the browser "required field" error, the vege/catagory selection error is powered by javascript and should read either: 'Please select a category for your recipe' or "Please select an option to indicate if your recipe is suitable for vegetarians" depending on which selection is missing.
+-  Users will not be able to add recipes once logged out.
+-  All links work
+-  Users cannot reach the add recipe page unless they are logged in. The will see an error "Please login to add a recipe" and be redirected to the home page
+-  The website was tested across different screen sizes and devices to ensure elements were displayed correctly
 
 [mLab](https://mlab.com/) was particularly useful for developing the CRUD features as I was able to easily see what data was being sent to the database.
 
@@ -109,7 +114,6 @@ The navbar is a side-nav with burger-icon for small and medium screens, and is a
 
 #### Bugs left to fix:
 - Security issues around forms. I need implement better security features to protect against cross-site scripting. At the moment, special characters cannot be entered into the text input due to the regex pattern specification, but ideally I will implemet CSRF tokens using Flask WTForms to better protect form inputs in future.
-- If the user does not have any recipes currently the 'card' is still visible. Instead, I would like to check the database and if there are no recipes for that user, there should be a message saying "You don't have any recipes yet." 
 - When the user wants to edit the recipe, the form fields should be filled in. However, the dropdown options do not always have the value selected, and even if they do, the javascript asking the user to select an option still runs.
 
 
@@ -127,16 +131,31 @@ heroku ps:scale web=1
 ```
 - Set Heroku app settings - Config Vars to IP 0.0.0.0 and PORT 5000
 - I had mistakenly included other config vars to git repo so I needed to change them and make them environment variables before deployment.
-- I changed the app 'secret_key' and database information, and made them environment variables using python's os.environ.
+- I changed the app 'secret_key' and database information including passwords, and made them new environment variables.
 - I then set these variables in Heroku app settings - Config Vars.
+
+### Development/deployment:
+The config vars are different for devlopment and deployment. For development, set "development = True" in app.py. Config vars will need to be set in a config.py file as follows:
+```
+import os
+
+class BaseConfig(object):
+    DEBUG = False
+    SECRET_KEY = <your_secret_key>
+    MONGO_URI = <your_mongo_uri>
+    MONGO_DBNAME = <your_db_name>
+    
+class DevelopmentConfig(BaseConfig):
+    DEBUG = True
+    
+```
 
 ### To run the files locally:
 
-- Download the files from the github repo, ensure all requirements are installed:
+- Download the files from the github repo, ensure all requirements are installed and environment variables are set ups:
 ```
 pip install -r requirements.txt
 python3 app.python
-http://localhost:5000
 ```
 
 ## Credits
@@ -156,8 +175,8 @@ https://unsplash.com/photos/9aUU5PGZfxY by Toa Heftiba
 https://unsplash.com/photos/zOlQ7lF-3vs by jennifer schmidt
 https://www.vegansociety.com/whats-new/blog/vegan-road-victorias-creative-kitchen
 https://unsplash.com/photos/N16iTD8g2s0 By Natural Chef Carolyn Nicholas 
-https://unsplash.com/photos/Mta8r0bxhbo
-https://unsplash.com/photos/GTDoOSzbDnk
+https://unsplash.com/photos/Mta8r0bxhbo by Kevin Schmid
+https://unsplash.com/photos/GTDoOSzbDnk by Fabien Rousselot
 https://unsplash.com/photos/DAkJbq-15EI by Lucas Favre
 https://unsplash.com/photos/GUWdkUjYlKA by Danny Halarewich
 https://unsplash.com/photos/0Epkj3JItao by Alice Hartrick

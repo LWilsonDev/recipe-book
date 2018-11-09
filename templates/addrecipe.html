@@ -5,8 +5,8 @@
   </div>
 </header>
 <main>
-  <div class='container card-panel margin-auto'>
-    <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
+  <form action="{{ url_for('addrecipe') }}" method="POST" class="col s12">
+    <div class='container card-panel margin-auto'>
       <div class="row">
         <h4 class='form-header'>Recipe Category</h4>
         <div class="input-field col s12">
@@ -27,42 +27,42 @@
           </select>
         </div>
       </div>
-  </div>
-  <div class='container card-panel margin-auto'>
-    <div class="row">
-      <h4 class='form-header'>Recipe Title</h4>
-      <div class="input-field col s12">
-        <input name="title" type="text" data-length="40" pattern="^[a-zA-Z0-9,.!?& ]*$" title="Letters only please" required>
-        <label>Recipe Title</label>
+    </div>
+    <div class='container card-panel margin-auto'>
+      <div class="row">
+        <h4 class='form-header'>Recipe Title</h4>
+        <div class="input-field col s12">
+          <input name="title" type="text" data-length="40" pattern="^[a-zA-Z0-9,.!?& ]*$" title="Letters only please" required>
+          <label>Recipe Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea name="description" class="materialize-textarea" placeholder="e.g. 10 mins cooking time, serves 4"></textarea>
+          <label>Timings/Servings etc.</label>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea name="description" class="materialize-textarea" placeholder="e.g. 10 mins cooking time, serves 4"></textarea>
-        <label>Timings/Servings etc.</label>
+    <div class='container card-panel margin-auto'>
+      <div class="row">
+        <h4 class='form-header'>Ingredients</h4>
+        <p>Start a new line for each ingredient</p>
+        <div class="input-field col s12">
+          <textarea name="ingredients" class="materialize-textarea" placeholder="e.g. 100g Flour"></textarea>
+        </div>
       </div>
     </div>
-  </div>
-  <div class='container card-panel margin-auto'>
-    <div class="row">
-      <h4 class='form-header'>Ingredients</h4>
-      <p>Start a new line for each ingredient</p>
-      <div class="input-field col s12">
-        <textarea name="ingredients" class="materialize-textarea" placeholder="e.g. 100g Flour"></textarea>
-      </div>
-    </div>
-  </div>
-  <div class='container card-panel margin-auto'>
-    <div class="row">
-      <h4 class='form-header'>Method</h4>
-      <div class="input-field col s12">
-        <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
-      </div>
-      <button class="js_recipe_btn btn waves-effect waves-light right" type="submit">Add Recipe
+    <div class='container card-panel margin-auto'>
+      <div class="row">
+        <h4 class='form-header'>Method</h4>
+        <div class="input-field col s12">
+          <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans"></textarea>
+        </div>
+        <button class="js_recipe_btn btn waves-effect waves-light right" type="submit">Add Recipe
           <i class="material-icons right">playlist_add</i>
       </button>
+      </div>
     </div>
-  </div>
   </form>
 </main>
 {% endblock %}

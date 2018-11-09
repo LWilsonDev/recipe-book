@@ -22,6 +22,7 @@ $(document).ready(function() {
           alert("Please select an option to indicate if your recipe is suitable for vegetarians");
       });
       
+     // pagination.js
      $('#myTable').pageMe({
     pagerSelector:'#myPager'});
 });

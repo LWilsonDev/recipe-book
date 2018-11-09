@@ -22,7 +22,7 @@ $.fn.pageMe = function(opts){
     if (typeof settings.pagerSelector!="undefined") {
         pager = $(settings.pagerSelector);
     }
-//altered numItems from original plugin to use li length
+//altered numItems from original plugin to use a length
     var numItems = $('#myTable').children('a').length;
     var numPages = Math.ceil(numItems/perPage);
     

@@ -6,14 +6,13 @@ import bcrypt
 import os
 import config
 
-
 app = Flask(__name__)
-
+mongo = PyMongo(app) 
 
 ####### Config Vars ######
 
 # set development and testing to False for deployment
-development = True
+development = False
 
 if development == True:
     app.config.from_object('config.DevelopmentConfig')
@@ -27,11 +26,8 @@ else:
         
 ######### 
 
-
-mongo = PyMongo(app)  
-
+# list to use in template loops for categories
 all_categories = ["breakfast", "lunch", "dinner", "dessert", "vegetarian", "vegan"]
-
 
 @app.route('/')
 def index():

@@ -58,6 +58,16 @@ body {
   margin-right: auto;
 }
 
+.table {
+  margin-bottom: 40px;
+}
+
+.cat-panel {
+  max-width: 80vw;
+  margin: 40px auto;
+  line-height: 1.8;
+}
+
 /* ===== text and Btns ===== */
 
 .intro-text {
@@ -134,10 +144,6 @@ body {
   font-size: 1.2em;
 }
 
-.table {
-  margin-bottom: 40px;
-}
-
 .author {
   font-size: 1.3em;
   font-family: 'Montserrat', sans-serif;
@@ -155,12 +161,6 @@ body {
   padding: 4px;
   border-radius: 8px;
   margin: 0px auto;
-}
-
-.cat-panel {
-  max-width: 80vw;
-  margin: 40px auto;
-  line-height: 1.8;
 }
 
 .social-icon-li {

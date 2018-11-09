@@ -21,6 +21,6 @@
     "description": String,
     "ingredients": [],
     "vegetarian": String,
-    "method": [] }
+    "method": String }
 
 

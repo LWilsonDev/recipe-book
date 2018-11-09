@@ -1,24 +1,32 @@
 {% extends 'base.html' %} {% block content %}
-
 <header>
-  <div class="row">
-    <div class="col s12 text-center">
-      <h2 class="page-title">{{ username }}'s Recipes</h2>
+    <div class="row sm-banner text-center">
+        <div class="col s12 m7 l6 flex-container height-50vh">
+            <div class="max-width-80 ">
+            <h1 class="category-page-title">{{ username }}'s Recipes</h1>
+            {% if username == session['username'] %}
+            <hr class="med-blue-hr">
+        <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a> 
+        {% endif %}
+            </div>
+        </div>
+        <div class="col s12 m5 l6 sm-pic pic-{{picture_number}}">
+            <!-- Intro Picture -->
+        </div>
     </div>
-  </div>
+
 </header>
 <main>
-  <div class="container min-height">
-    <div class="row text-center">
-      {% if username == session['username'] %}
-        <a href="{{url_for('addrecipe')}}" class="waves-effect waves-light btn"><i class="material-icons left">playlist_add</i>Add Recipe</a> {% endif %}
-      <div class="col s12 text-center">
-        <div class="cat-panel card-panel">
-        <ul>
+  <div class="row recipe-container">
+    <div class="col s12">
+      <div class="cat-panel text-center">
+        <div id="myTable" class="collection table">
           {% for recipe in user_recipes %}
-          <li><a href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a></li>
+          <a class="collection-item list-font" href="{{url_for('recipe', recipe_id=recipe._id)}}">{{ recipe.title }}</a>
           {% endfor %}
-        </ul>
+        </div>
+        <div class="text-center">
+          <ul class="pagination pager" id="myPager"></ul>
         </div>
       </div>
     </div>

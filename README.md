@@ -156,7 +156,16 @@ https://unsplash.com/photos/9aUU5PGZfxY by Toa Heftiba
 https://unsplash.com/photos/zOlQ7lF-3vs by jennifer schmidt
 https://www.vegansociety.com/whats-new/blog/vegan-road-victorias-creative-kitchen
 https://unsplash.com/photos/N16iTD8g2s0 By Natural Chef Carolyn Nicholas 
+https://unsplash.com/photos/Mta8r0bxhbo
+https://unsplash.com/photos/GTDoOSzbDnk
+https://unsplash.com/photos/DAkJbq-15EI by Lucas Favre
+https://unsplash.com/photos/GUWdkUjYlKA by Danny Halarewich
+https://unsplash.com/photos/0Epkj3JItao by Alice Hartrick
+https://unsplash.com/photos/d5FMKCK0J3I by Brina Blum
+https://unsplash.com/photos/yL5Vp57D6U4 by Livin4Wheel
+https://unsplash.com/photos/Af1OMQpuN14 by Ian Usher
 
 #### Acknowledgements
 
 - Login and Signup  password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
+- JQuery pagination plugin https://www.jqueryscript.net/table/jQuery-Table-Pagination-For-Materialize.html

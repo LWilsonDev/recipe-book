@@ -67,8 +67,7 @@
       <div class="row">
         <h4 class='form-header'>Method</h4>
         <div class="input-field col s12">
-          <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans">{% for step in recipe.method %}{{ step }}
-{% endfor %}</textarea>
+          <textarea name="method" class="materialize-textarea" placeholder="eg. 1. Open tin of beans">{{ recipe.method }}</textarea>
         </div>
         <button href="{{ url_for('update_recipe', recipe_id=recipe._id) }}" name="edit_recipe" class="signup-btn btn waves-effect waves-light" type="submit">Confirm changes
             <i class="material-icons right">playlist_add</i>

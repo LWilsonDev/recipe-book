@@ -1,27 +1,32 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container text-center">
-  <header>
-    <h3 class="page-title">{{ category_name }} Recipes</h3>
-  </header>
-  <main>
-    <div class="row text-center min-height">
-      <div class="col s12">
-        <div class="cat-panel card-panel">
-          <ul id="myTable">
-            {% for recipe in category%}
-            <li><a href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.title }}</a></li>
-            {% endfor %}
-          </ul>
+{% set active_page = "{{ category_name.lowercase() }}" %}
+<header>
+  <div class="row sm-banner text-center">
+    <div class="col s12 m7 l6 flex-container height-50vh">
+      <div class="max-width-80 ">
+        <h1 class="category-page-title">{{ category_name }} Recipes</h1>
+      </div>
+    </div>
+    <div class="col s12 m5 l6 sm-pic pic-{{picture_number}}">
+      <!-- Intro Picture -->
+    </div>
+  </div>
+</header>
+<main>
+  <div class="row recipe-container">
+    <div class="col s12">
+      <div class="cat-panel text-center">
+        <div id="myTable" class="collection table">
+          {% for recipe in category %}
+          <a class="collection-item list-font" href="{{ url_for('recipe', recipe_id=recipe._id) }}">{{ recipe.title }}</a> {% endfor %}
+        </div>
+        <div class="text-center">
+          <ul class="pagination pager" id="myPager"></ul>
         </div>
       </div>
     </div>
-    <div>
-      
-<ul class="pagination pager" id="myPager"></ul>
-
-    
   </div>
-  </main>
-</div>
+</main>
+
 
 {% endblock %}

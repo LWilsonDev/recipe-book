@@ -17,19 +17,16 @@
   <nav class="mynav">
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
-      <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
-      <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
-      <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
-      <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
-      <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
+      {% for cat in all_categories %}
+      <li><a href="{{ url_for('category', category_name=cat.capitalize())}}">{{ cat.capitalize() }}</a></li>
+      {% endfor %}
     </ul>
     <div class="nav-wrapper">
       <a href="{{url_for('index')}}" class="brand-logo">Vanlife <i class="material-icons">restaurant</i></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Recipes<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
         {% if 'username' in session %}
         <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
         <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
@@ -50,12 +47,9 @@
         <li><a class="modal-trigger" href="#register"><i class="material-icons right">edit</i>Sign Up</a></li>
         {% endif %}
         <hr class="sm-hr">
-        <li><a href="{{ url_for('category', category_name='Breakfast')}}">Breakfast</a></li>
-        <li><a href="{{ url_for('category', category_name='Lunch')}}">Lunch</a></li>
-        <li><a href="{{ url_for('category', category_name='Dinner')}}">Dinner</a></li>
-        <li><a href="{{ url_for('category', category_name='Dessert')}}">Dessert</a></li>
-        <li><a href="{{ url_for('category', category_name='Vegetarian')}}">Vegetarian</a></li>
-        <li><a href="{{ url_for('category', category_name='Vegan')}}">Vegan</a></li>
+        {% for cat in all_categories %}
+        <li><a href="{{ url_for('category', category_name=cat.capitalize())}}">{{ cat.capitalize() }}</a></li>
+        {% endfor %}
       </ul>
     </div>
   </nav>
@@ -109,13 +103,10 @@
       </div>
     </div>
   </footer>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript" src="../static/js/pagination.js"></script>
   <script type="text/javascript" src="../static/js/base.js"></script>
-  
-  </script>
 </body>
 
 </html>

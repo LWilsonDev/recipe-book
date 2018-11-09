@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, session, redirect, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from random import *
 import bcrypt
 import os
 import config
@@ -27,11 +28,14 @@ else:
 ######### 
 
 
-mongo = PyMongo(app)    
+mongo = PyMongo(app)  
+
+all_categories = ["breakfast", "lunch", "dinner", "dessert", "vegetarian", "vegan"]
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', all_categories=all_categories)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -90,19 +94,21 @@ def addrecipe():
             
             return redirect(url_for("myrecipes", username=session['username']))
         
-        return render_template("addrecipe.html")
+        return render_template("addrecipe.html", all_categories=all_categories)
     #If user navigates to /addrecipe but isnt logged in, show error    
     flash("Please login to add a recipe")
-    return render_template("index.html") 
+    return render_template("index.html", all_categories=all_categories) 
     
 
 @app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
 def recipe(recipe_id):
     '''
     Detail page for each recipe
+    Random image selected from range
     '''
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('recipe_test_style.html', recipe=the_recipe)
+    pic = randint(1,10)
+    return render_template('recipe.html', recipe=the_recipe, picture_number=pic, all_categories=all_categories)
 
 
 @app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
@@ -110,9 +116,10 @@ def myrecipes(username):
     '''
     Shows all recipes of the user, or all recipes from one specific author
     '''
-    user_recipes = mongo.db.recipes.find({"author": username})    
+    user_recipes = mongo.db.recipes.find({"author": username})  
+    pic = randint(1,10)
     return render_template('myrecipes.html', user_recipes=user_recipes,
-                           username=username)
+                           username=username, picture_number=pic, all_categories=all_categories)
 
 
 @app.route('/category/<category_name>', methods=['POST', 'GET'])
@@ -126,7 +133,8 @@ def category(category_name):
         the_category = mongo.db.recipes.find({"vegetarian": "Vegan"})
     else:
         the_category = mongo.db.recipes.find({"category": category_name})
-    return render_template('category.html', category_name=category_name, category=the_category)
+    pic = randint(1,10)    
+    return render_template('category.html', category_name=category_name, category=the_category, picture_number=pic, all_categories=all_categories)
 
 
 @app.route('/edit_recipe/<recipe_id>', methods=['POST', 'GET'])
@@ -134,7 +142,7 @@ def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = ["Breakfast", "Lunch", "Dinner", "Dessert"]
     vege_list = ["Not vegetarian", "Vegetarian", "Vegan"]
-    return render_template("edit_recipe.html", recipe=the_recipe, categories=categories, vege_list=vege_list)
+    return render_template("edit_recipe.html", recipe=the_recipe, categories=categories, vege_list=vege_list, all_categories=all_categories)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])

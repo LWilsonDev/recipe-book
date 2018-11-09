@@ -109,6 +109,15 @@ body {
 .pic-7 {
   background-image: url("https://images.unsplash.com/photo-1521014710171-f44dfe788ece?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a7490034ce124732f490e61bf2fff1e6&auto=format&fit=crop&w=750&q=80");
 }
+.pic-8 {
+  background-image: url("https://images.unsplash.com/photo-1496498733559-04a441e8fefb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b833d125f70777bfd580a3f3ee2eaa99&auto=format&fit=crop&w=750&q=80");
+}
+.pic-9 {
+  background-image: url("https://images.unsplash.com/photo-1486330071120-ba4e79e49431?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=109d296d36e3f979dc99e81ea8f1f487&auto=format&fit=crop&w=755&q=80");
+}
+.pic-10 {
+  background-image: url("https://images.unsplash.com/photo-1513350949-6bd4ab6ff7f8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=82daff0096a291aee670beb457e3af5d&auto=format&fit=crop&w=889&q=80");
+}
 
 .van-pic {
   width: 100%;
@@ -175,8 +184,21 @@ body {
   
 }
 
+.category-page-title {
+   font-size: 2.5em;
+  font-family: 'Montserrat', sans-serif;
+  color: #f19a00;
+}
+
 .blue-txt {
   color: #aed9d4;
+}
+
+.list-font {
+  font-size: 1.2em;
+}
+.table {
+  margin-bottom: 40px;
 }
 
 .author {

@@ -27,9 +27,9 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <!-- Dropdown Trigger -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
         {% if 'username' in session %}
         <li><a href="{{url_for('myrecipes', username=session['username'])}}" class="">Your Recipes <i class="material-icons right">restaurant</i></a></li>
-        <li><a href="{{url_for('addrecipe')}}" class="">Add Recipe <i class="material-icons right">playlist_add</i></a></li>
         <li><a href="{{url_for('logout')}}">Logout<i class="material-icons right">exit_to_app</i></a></li>
         {% else %}
         <li><a class="modal-trigger" href="#login"><i class="material-icons right">person</i>Log In</a></li>

@@ -5,16 +5,16 @@ from random import *
 import bcrypt
 import os
 
+
 app = Flask(__name__)
-mongo = PyMongo(app) 
 
 ####### Config Vars ######
 
 # set development and testing to False for deployment
-development = False
+development = True
 
 if development == True:
-    import config
+    import config 
     app.config.from_object('config.DevelopmentConfig')
 
 else: 
@@ -25,6 +25,7 @@ else:
     DEBUG=False
         
 ######### 
+mongo = PyMongo(app) 
 
 # list to use in template loops for categories
 all_categories = ["breakfast", "lunch", "dinner", "dessert", "vegetarian", "vegan"]

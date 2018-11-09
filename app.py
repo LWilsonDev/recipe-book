@@ -14,7 +14,7 @@ app = Flask(__name__)
 development = True
 
 if development == True:
-    import config 
+    import config
     app.config.from_object('config.DevelopmentConfig')
 
 else: 

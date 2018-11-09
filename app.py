@@ -11,7 +11,7 @@ app = Flask(__name__)
 ####### Config Vars ######
 
 # set development and testing to False for deployment
-development = True
+development = False
 
 if development == True:
     import config

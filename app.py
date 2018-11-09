@@ -4,7 +4,6 @@ from bson.objectid import ObjectId
 from random import *
 import bcrypt
 import os
-import config
 
 app = Flask(__name__)
 mongo = PyMongo(app) 
@@ -15,6 +14,7 @@ mongo = PyMongo(app)
 development = False
 
 if development == True:
+    import config
     app.config.from_object('config.DevelopmentConfig')
 
 else: 

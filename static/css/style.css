@@ -5,6 +5,40 @@ body {
   background-color: #aed9d4;
 }
 
+/* ===== Navigation ===== */
+
+.mynav {
+  background-color: #36a69a;
+  color: #195567;
+}
+
+.side-nav {
+  background-color: #58b9c3;
+  color: #195567;
+}
+
+.my-side li>a {
+  color: #195567;
+}
+
+.side-nav-cat {
+  font-size: 1.35em;
+  margin-left: 30px;
+  margin-top: 20px;
+  color: white;
+  margin-top: 10px;
+}
+
+.grey-footer {
+  background-color: #619c96;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* =====  Containers ===== */
+
 .full-width {
   width: 100%;
 }
@@ -17,116 +51,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-}
-.height-50vh {
-  height: 50vh;
 }
 
-.max-width-80 {
-  max-width: 80%;
-
+.margin-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.card-image {
-  height: 300px;
-  width: 100%;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.breakfast-img {
-  background-image: url("https://images.unsplash.com/photo-1528301392571-0dfab3c00216?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d9cf7b5db701b7e7a025f413d16d162&auto=format&fit=crop&w=400&q=80");
-}
-
-.lunch-img {
-  background-image: url("https://images.unsplash.com/photo-1526311444844-a6a2c8f730b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7cd101550b6c0468af091485aeef827f&auto=format&fit=crop&w=357&q=80");
-}
-
-.dinner-img {
-  background-image: url("https://images.unsplash.com/photo-1520218508822-998633d997e6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9a367c42f6b4004f2c0e7f396778a192&auto=format&fit=crop&w=334&q=80");
-}
-
-.dessert-img {
-  background-image: url("https://images.unsplash.com/photo-1518710101263-54e0350377bb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=44efc884b965a63f27fe028b8b3601e3&auto=format&fit=crop&w=334&q=80");
-}
-
-.vegetarian-img {
-  background-image: url("https://images.unsplash.com/photo-1511910849309-0dffb8785146?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cb677eb9f83408ece2d78918458f1cb4&auto=format&fit=crop&w=334&q=80");
-}
-
-.vegan-img {
-  background-image: url("https://images.unsplash.com/photo-1498601761256-9e93c6f5c181?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1c88a204e3fd310ff7e9ea5d61a3c6d8&auto=format&fit=crop&w=721&q=80");
-}
-
-.title {
-  font-family: 'Montserrat', sans-serif;
-  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
-  0px -5px 35px rgba(255, 255, 255, 0.3),
-  2px 2px 2px rgba(80, 7, 164, 0),
-  2px 2px 2px rgba(80, 7, 164, 0);
-  font-size: 3.5rem;
-  color: #f19a00;
-}
-
-.banner {
-  background-color: #0f4f56;
-  height: 80vh;
-}
-
-.sm-banner {
-  background-color: #0f4f56;
-  height: 50vh;
-}
-
-.sm-pic {
-  width: 100%;
-  height: 50vh;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.pic-1 {
-  background-image: url("https://images.unsplash.com/photo-1503516353893-4bc5bd56f50d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c86a75a0153504339c8058b938c4f861&auto=format&fit=crop&w=749&q=80");
-}
-.pic-2 {
-  background-image: url("https://images.unsplash.com/photo-1515876305430-f06edab8282a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eeb21c7f2a9cc2ca52a818ddd12944fe&auto=format&fit=crop&w=750&q=80");
-}
-.pic-3 {
-  background-image: url("https://images.unsplash.com/photo-1516394399858-ae258cf724cc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=01bef1ef89c0277e17112687a24f49cb&auto=format&fit=crop&w=1350&q=80");
-}
-.pic-4 {
-  background-image: url("https://images.unsplash.com/photo-1516173953256-444587fcd3ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=823830b17333a4b3b8121162f1c1932b&auto=format&fit=crop&w=749&q=80");
-}
-.pic-5 {
-  background-image: url("https://images.unsplash.com/photo-1538325875686-5d7a523b355a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a723f06a23973e97a804adc5a3af6b3&auto=format&fit=crop&w=667&q=80");
-}
-.pic-6 {
-  background-image: url("https://images.unsplash.com/photo-1515642937189-101a1692e3b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eb141e901eb40cca3999afaf18347303&auto=format&fit=crop&w=750&q=80");
-}
-.pic-7 {
-  background-image: url("https://images.unsplash.com/photo-1521014710171-f44dfe788ece?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a7490034ce124732f490e61bf2fff1e6&auto=format&fit=crop&w=750&q=80");
-}
-.pic-8 {
-  background-image: url("https://images.unsplash.com/photo-1496498733559-04a441e8fefb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b833d125f70777bfd580a3f3ee2eaa99&auto=format&fit=crop&w=750&q=80");
-}
-.pic-9 {
-  background-image: url("https://images.unsplash.com/photo-1486330071120-ba4e79e49431?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=109d296d36e3f979dc99e81ea8f1f487&auto=format&fit=crop&w=755&q=80");
-}
-.pic-10 {
-  background-image: url("https://images.unsplash.com/photo-1513350949-6bd4ab6ff7f8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=82daff0096a291aee670beb457e3af5d&auto=format&fit=crop&w=889&q=80");
-}
-
-.van-pic {
-  width: 100%;
-  height: 80vh;
-  background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+/* ===== text and Btns ===== */
 
 .intro-text {
   padding: 3% 5%;
@@ -136,6 +68,16 @@ body {
 .lead-text {
   font-size: 1.2em;
   padding: 10px;
+  color: #f19a00;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
+  0px -5px 35px rgba(255, 255, 255, 0.3),
+  2px 2px 2px rgba(80, 7, 164, 0),
+  2px 2px 2px rgba(80, 7, 164, 0);
+  font-size: 3.5rem;
   color: #f19a00;
 }
 
@@ -167,11 +109,6 @@ body {
   text-align: center;
 }
 
-.margin-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .page-title {
   margin-top: 40px;
   font-size: 1.8em;
@@ -181,7 +118,6 @@ body {
   font-size: 2em;
   font-family: 'Montserrat', sans-serif;
   color: #f19a00;
-  
 }
 
 .category-page-title {
@@ -197,6 +133,7 @@ body {
 .list-font {
   font-size: 1.2em;
 }
+
 .table {
   margin-bottom: 40px;
 }
@@ -211,43 +148,13 @@ body {
 }
 
 .flashes {
-  width: 100%;
+  width: 80%;
   height: 38px;
   background-color: #f19a00;
   text-align: center;
   padding: 4px;
   border-radius: 8px;
-  margin: 15px auto;
-}
-
-.mynav {
-  background-color: #36a69a;
-  color: #195567;
-}
-
-.side-nav {
-  background-color: #58b9c3;
-  color: #195567;
-}
-
-.my-side li>a {
-  color: #195567;
-}
-
-.side-nav-cat {
-  font-size: 1.35em;
-  margin-left: 30px;
-  margin-top: 20px;
-  color: white;
-  margin-top: 10px;
-}
-
-.blue-footer {
-  background-color: #36a69a;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  margin: 0px auto;
 }
 
 .cat-panel {
@@ -287,6 +194,102 @@ body {
 .social-icon-list {
   display: inline;
 }
+
+/* ===== Banners and images ===== */
+
+.banner {
+  background-color: #0f4f56;
+  height: 80vh;
+}
+
+.page-banner {
+  height: 50vh;
+}
+
+.sm-banner {
+  background-color: #0f4f56;
+  height: 50vh;
+}
+
+.sm-pic {
+  width: 100%;
+  height: 50vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.van-pic {
+  width: 100%;
+  height: 80vh;
+  background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-image {
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+/* ===== Image URLs ===== */
+
+.pic-1 {
+  background-image: url("https://images.unsplash.com/photo-1503516353893-4bc5bd56f50d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c86a75a0153504339c8058b938c4f861&auto=format&fit=crop&w=749&q=80");
+}
+.pic-2 {
+  background-image: url("https://images.unsplash.com/photo-1515876305430-f06edab8282a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eeb21c7f2a9cc2ca52a818ddd12944fe&auto=format&fit=crop&w=750&q=80");
+}
+.pic-3 {
+  background-image: url("https://images.unsplash.com/photo-1516394399858-ae258cf724cc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=01bef1ef89c0277e17112687a24f49cb&auto=format&fit=crop&w=1350&q=80");
+}
+.pic-4 {
+  background-image: url("https://images.unsplash.com/photo-1516173953256-444587fcd3ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=823830b17333a4b3b8121162f1c1932b&auto=format&fit=crop&w=749&q=80");
+}
+.pic-5 {
+  background-image: url("https://images.unsplash.com/photo-1538325875686-5d7a523b355a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a723f06a23973e97a804adc5a3af6b3&auto=format&fit=crop&w=667&q=80");
+}
+.pic-6 {
+  background-image: url("https://images.unsplash.com/photo-1515642937189-101a1692e3b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eb141e901eb40cca3999afaf18347303&auto=format&fit=crop&w=750&q=80");
+}
+.pic-7 {
+  background-image: url("https://images.unsplash.com/photo-1521014710171-f44dfe788ece?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a7490034ce124732f490e61bf2fff1e6&auto=format&fit=crop&w=750&q=80");
+}
+.pic-8 {
+  background-image: url("https://images.unsplash.com/photo-1496498733559-04a441e8fefb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b833d125f70777bfd580a3f3ee2eaa99&auto=format&fit=crop&w=750&q=80");
+}
+.pic-9 {
+  background-image: url("https://images.unsplash.com/photo-1486330071120-ba4e79e49431?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=109d296d36e3f979dc99e81ea8f1f487&auto=format&fit=crop&w=755&q=80");
+}
+.pic-10 {
+  background-image: url("https://images.unsplash.com/photo-1513350949-6bd4ab6ff7f8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=82daff0096a291aee670beb457e3af5d&auto=format&fit=crop&w=889&q=80");
+}
+.breakfast-img {
+  background-image: url("https://images.unsplash.com/photo-1528301392571-0dfab3c00216?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d9cf7b5db701b7e7a025f413d16d162&auto=format&fit=crop&w=400&q=80");
+}
+.lunch-img {
+  background-image: url("https://images.unsplash.com/photo-1526311444844-a6a2c8f730b3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7cd101550b6c0468af091485aeef827f&auto=format&fit=crop&w=357&q=80");
+}
+.dinner-img {
+  background-image: url("https://images.unsplash.com/photo-1520218508822-998633d997e6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9a367c42f6b4004f2c0e7f396778a192&auto=format&fit=crop&w=334&q=80");
+}
+.dessert-img {
+  background-image: url("https://images.unsplash.com/photo-1518710101263-54e0350377bb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=44efc884b965a63f27fe028b8b3601e3&auto=format&fit=crop&w=334&q=80");
+}
+.vegetarian-img {
+  background-image: url("https://images.unsplash.com/photo-1511910849309-0dffb8785146?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cb677eb9f83408ece2d78918458f1cb4&auto=format&fit=crop&w=334&q=80");
+}
+.vegan-img {
+  background-image: url("https://images.unsplash.com/photo-1498601761256-9e93c6f5c181?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1c88a204e3fd310ff7e9ea5d61a3c6d8&auto=format&fit=crop&w=721&q=80");
+}
+
+
+/* ===== MEDIA QUERIES ===== */
 
 
 @media (min-width: 768px) {

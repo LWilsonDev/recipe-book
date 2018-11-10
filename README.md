@@ -130,10 +130,11 @@ The navbar is a side-nav with burger-icon for small and medium screens, and is a
 
 - There were some issues with the 'add recipe' form submitting correctly. If the user had not selected a category or vegetarian option then the form would not submit. Adding a 'required' html tag did not fix the bug. Instead, I had to use Javascript/Jquery to check if the options were selected when the "add recipe" button was clicked - and alert the user if not.
 - When there was not much content on a page, the footer did not display at the bottom of the page. Using CSS to position it did not have the desired results for all the pages, instead I gave the <main> section a minimum height.
+- Bug fix to 'add recipe' form. A difference in spelling between the value for 'Not vegetarian' in the 'add recipe' form and the 'edit recipe' route was causing the vegetarian dropdown validation to fail.
 
 #### Bugs left to fix:
-- Security issues around forms. I need implement better security features to protect against cross-site scripting. At the moment, special characters cannot be entered into the text input due to the regex pattern specification, but ideally I will implemet CSRF tokens using Flask WTForms to better protect form inputs in future.
-- When the user wants to edit the recipe, the form fields should be filled in. However, the dropdown options do not always have the value selected, and even if they do, the javascript asking the user to select an option still runs.
+
+- Security issues around forms. I need implement better security features to protect against cross-site scripting. At the moment, special characters cannot be entered into the text input due to the regex pattern specification, but I will implement CSRF tokens using Flask WTForms to better protect form inputs in future.
 
 
 ## Deployment

@@ -45,7 +45,7 @@ def login():
                 flash('Welcome back, ' + session['username'])
                 return redirect(url_for('index'))
         flash('Invalid username/password')        
-    return render_template('index.html')
+    return redirect(url_for('index'))
     
     
 @app.route('/logout')
@@ -97,7 +97,7 @@ def addrecipe():
     return render_template("index.html", all_categories=all_categories) 
     
 
-@app.route('/recipe/<recipe_id>', methods=['POST', 'GET'])
+@app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
     '''
     Detail page for each recipe
@@ -108,7 +108,7 @@ def recipe(recipe_id):
     return render_template('recipe.html', recipe=the_recipe, picture_number=pic, all_categories=all_categories)
 
 
-@app.route('/myrecipes/<username>/', methods=['POST', 'GET'])
+@app.route('/myrecipes/<username>/')
 def myrecipes(username):
     '''
     Shows all recipes of the user, or all recipes from one specific author
@@ -119,7 +119,7 @@ def myrecipes(username):
                            username=username, picture_number=pic, all_categories=all_categories)
 
 
-@app.route('/category/<category_name>', methods=['POST', 'GET'])
+@app.route('/category/<category_name>')
 def category(category_name):
     '''
     Shows list of all recipes in a category
@@ -134,7 +134,7 @@ def category(category_name):
     return render_template('category.html', category_name=category_name, category=the_category, picture_number=pic, all_categories=all_categories)
 
 
-@app.route('/edit_recipe/<recipe_id>', methods=['POST', 'GET'])
+@app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = ["Breakfast", "Lunch", "Dinner", "Dessert"]
@@ -158,7 +158,7 @@ def update_recipe(recipe_id):
     return redirect(url_for('recipe', recipe_id=recipe_id))
  
     
-@app.route('/delete_recipe/<recipe_id>', methods=["GET"])
+@app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('myrecipes', username=session['username']))   

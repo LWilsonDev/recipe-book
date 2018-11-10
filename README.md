@@ -70,9 +70,26 @@ I used a similar layout across the site's pages to aid UX and keep a consistent 
 ## Testing
 
 Unit tests for the login/register/logout functionality can be found [here](https://github.com/LWilsonDev/recipe-book/blob/master/test.py)
-These tests can be ran from the command line using "python3 test.py" 
+In order to use the tests, the app must be set up with a database, and there should be a user as follows:
+```
+users {
+"username": "test_username",
+"password": "test_password"
+}
+
+```
+These tests can be ran from the command line using:
+```
+python3 test.py
+```
 
 The automatic tests check the following: 
+
+#### Index:
+- Test to ensure Flask app has been created successfully and the server responds with a status code of 200
+
+#### Page loads:
+- Test to ensure the index page loads with the correct template
 
 #### Login:
 - Returning users with correct password should see a "welcome back" message
@@ -85,17 +102,19 @@ The automatic tests check the following:
 #### Logout:
 - Users should be redirected to index page and see "logged out" message.
 
+#### Authentication for add recipe:
+- Test to ensure users can't add a recipe without being logged in.
+
 
 I underwent thorough manual testing of each element including:
 
 - Once logged in, users can add a recipe to the database. The recipe should have a title of no more than 40 letters, and must not include special characters other than '&' and punctuation.
 - If the user does not select a category or vegetarian/not, or if they do not give the recipe a title they will see an error message. The title error message is the browser "required field" error, the vege/catagory selection error is powered by javascript and should read either: 'Please select a category for your recipe' or "Please select an option to indicate if your recipe is suitable for vegetarians" depending on which selection is missing.
--  Users will not be able to add recipes once logged out.
--  All links work
--  Users cannot reach the add recipe page unless they are logged in. The will see an error "Please login to add a recipe" and be redirected to the home page
--  The website was tested across different screen sizes and devices to ensure elements were displayed correctly
-
-[mLab](https://mlab.com/) was particularly useful for developing the CRUD features as I was able to easily see what data was being sent to the database.
+- Users will not be able to add recipes once logged out.
+- All links work
+- Users cannot reach the add recipe page unless they are logged in. The will see an error "Please login to add a recipe" and be redirected to the home page
+- The website was tested across different screen sizes and devices to ensure elements were displayed correctly
+- [mLab](https://mlab.com/) was particularly useful for developing the CRUD features as I was able to easily see what data was being sent to the database.
 
 #### Screen sizes:
 
@@ -160,7 +179,7 @@ python3 app.python
 
 ## Credits
 
-This app is intended only as an educational project, not for actual real-world deployment.
+This app is intended only as an educational project.
 
 #### Content:
 
@@ -168,23 +187,24 @@ This app is intended only as an educational project, not for actual real-world d
 
 #### Photos:
 
-https://unsplash.com/photos/HzVHlwvQlyw by nickldn 
-https://unsplash.com/photos/r-dChNeNKk8 by kevin mccutcheon 
-https://unsplash.com/photos/9Er-MNdzrPA by jen kosar 
-https://unsplash.com/photos/9aUU5PGZfxY by Toa Heftiba 
-https://unsplash.com/photos/zOlQ7lF-3vs by jennifer schmidt
-https://www.vegansociety.com/whats-new/blog/vegan-road-victorias-creative-kitchen
-https://unsplash.com/photos/N16iTD8g2s0 By Natural Chef Carolyn Nicholas 
-https://unsplash.com/photos/Mta8r0bxhbo by Kevin Schmid
-https://unsplash.com/photos/GTDoOSzbDnk by Fabien Rousselot
-https://unsplash.com/photos/DAkJbq-15EI by Lucas Favre
-https://unsplash.com/photos/GUWdkUjYlKA by Danny Halarewich
-https://unsplash.com/photos/0Epkj3JItao by Alice Hartrick
-https://unsplash.com/photos/d5FMKCK0J3I by Brina Blum
-https://unsplash.com/photos/yL5Vp57D6U4 by Livin4Wheel
-https://unsplash.com/photos/Af1OMQpuN14 by Ian Usher
+- https://unsplash.com/photos/HzVHlwvQlyw by nickldn 
+- https://unsplash.com/photos/r-dChNeNKk8 by kevin mccutcheon 
+- https://unsplash.com/photos/9Er-MNdzrPA by jen kosar 
+- https://unsplash.com/photos/9aUU5PGZfxY by Toa Heftiba 
+- https://unsplash.com/photos/zOlQ7lF-3vs by jennifer schmidt
+- https://www.vegansociety.com/whats-new/blog/vegan-road-victorias-creative-kitchen
+- https://unsplash.com/photos/N16iTD8g2s0 By Natural Chef Carolyn Nicholas 
+- https://unsplash.com/photos/Mta8r0bxhbo by Kevin Schmid
+- https://unsplash.com/photos/GTDoOSzbDnk by Fabien Rousselot
+- https://unsplash.com/photos/DAkJbq-15EI by Lucas Favre
+- https://unsplash.com/photos/GUWdkUjYlKA by Danny Halarewich
+- https://unsplash.com/photos/0Epkj3JItao by Alice Hartrick
+- https://unsplash.com/photos/d5FMKCK0J3I by Brina Blum
+- https://unsplash.com/photos/yL5Vp57D6U4 by Livin4Wheel
+- https://unsplash.com/photos/Af1OMQpuN14 by Ian Usher
 
 #### Acknowledgements
 
 - Login and Signup  password encryption code adapted from PrettyPrinted tutorial: https://github.com/PrettyPrinted/mongodb-user-login 
 - JQuery pagination plugin https://www.jqueryscript.net/table/jQuery-Table-Pagination-For-Materialize.html
+- Unittests with Flask tutorial: https://github.com/realpython/discover-flask

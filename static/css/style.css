@@ -199,7 +199,7 @@ body {
 
 .banner {
   background-color: #0f4f56;
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .page-banner {
@@ -341,4 +341,5 @@ body {
     max-width: 30vw;
     margin: 20px auto;
   }
+  
 }

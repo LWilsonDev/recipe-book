@@ -221,7 +221,7 @@ body {
 
 .van-pic {
   width: 100%;
-  height: 80vh;
+  min-height: 80vh;
   background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
   background-position: center;
   background-size: cover;

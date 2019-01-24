@@ -199,7 +199,8 @@ body {
 
 .banner {
   background-color: #0f4f56;
-  min-height: 80vh;
+  height: 80vh;
+  
 }
 
 .page-banner {
@@ -221,7 +222,7 @@ body {
 
 .van-pic {
   width: 100%;
-  min-height: 80vh;
+  height: 80vh;
   background-image: url("https://www.vegansociety.com/sites/default/files/uploads/blog/Victoria%20%26%20Campervan%20sunset.jpg");
   background-position: center;
   background-size: cover;
@@ -340,6 +341,12 @@ body {
   .recipe-panel {
     max-width: 30vw;
     margin: 20px auto;
+  }
+  .van-pic {
+    height: 500px;
+  }
+  .banner {
+    height: 500px;
   }
   
 }
